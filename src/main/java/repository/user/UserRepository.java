@@ -1,65 +1,50 @@
 package repository.user;
 
 import model.User;
-import java.io.*;
-import java.util.ArrayList;
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserRepository {
-
-    private List<User> users;
+    private final UserFileHandler fileHandler;
 
     public UserRepository() {
-        users = new ArrayList<>();
+        this.fileHandler = new UserFileHandler();
     }
 
     public void saveUser(User user) {
+        List<User> users = fileHandler.readFromFile();
         users.add(user);
+        fileHandler.saveToFile(users);
     }
 
     public User findUserByIdUser(String idUser) {
-        for (User user : users) {
-            if (user.getIdUser().equals(idUser)) {
-                return user;
-            }
-        }
-        return null;
+        return fileHandler.readFromFile().stream()
+                .filter(user -> user.getIdUser().equals(idUser))
+                .findFirst()
+                .orElse(null);
     }
 
     public void updateUser(User updatedUser) {
+        List<User> users = fileHandler.readFromFile();
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getIdUser().equals(updatedUser.getIdUser())) {
                 users.set(i, updatedUser);
-                return;
+                break;
             }
         }
+        fileHandler.saveToFile(users);
     }
 
     public void deleteUser(String idUser) {
-        users.removeIf(user -> user.getIdUser().equals(idUser));
+        List<User> users = fileHandler.readFromFile();
+        users = users.stream()
+                .filter(user -> !user.getIdUser().equals(idUser))
+                .collect(Collectors.toList());
+        fileHandler.saveToFile(users);
     }
 
     public List<User> getAllUsers() {
-        return users;
-    }
-
-    public void saveUsersToFile(String filename) {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
-            oos.writeObject(users);
-            System.out.println("Usuarios guardados correctamente.");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @SuppressWarnings("unchecked")
-    public void loadUsersFromFile(String filename) {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
-            users = (List<User>) ois.readObject();
-            System.out.println("Usuarios cargados correctamente.");
-        } catch (IOException | ClassNotFoundException e) {
-            users = new ArrayList<>();
-            System.out.println("No se pudo cargar el archivo. Lista vacía inicializada.");
-        }
+        return fileHandler.readFromFile();
     }
 }

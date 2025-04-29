@@ -8,6 +8,10 @@ import service.query.GetAllUsersHandler;
 import service.query.FindUserByIdHandler;
 import model.User;
 import java.util.List;
+import javax.swing.JTable;
+import repository.user.UserFileHandler;
+import service.user.util.helpers.SelectUserTableHandler;
+import service.user.util.helpers.ShowUserAndCreateTableHandler;
 import util.LoginRequest;
 
 public class UserController {
@@ -27,8 +31,8 @@ public class UserController {
     }
     
     public static String loginController(LoginRequest request) {
-    UserController controller = new UserController();
-    List<User> users = controller.getAllUsers(); // Lee usuarios desde archivo
+    UserFileHandler fileHandler = new UserFileHandler();
+        List<User> users = fileHandler.readFromFile();
 
     if (request.getIdUser().equals("sudo") && request.getPassword().equals("sudo")) {
         return "admin";
@@ -42,7 +46,18 @@ public class UserController {
 
     return "NN"; // No encontrado
 }
-
+    
+    public static void ShowUserController(JTable table) {
+        UserFileHandler fileHandler = new UserFileHandler();
+        List<User> users = fileHandler.readFromFile();
+        ShowUserAndCreateTableHandler showUserTableHandler = new ShowUserAndCreateTableHandler();
+        showUserTableHandler.showTable(table, users);
+    }
+    
+    public static User SelectUserController(JTable table) {
+    SelectUserTableHandler selectUserTableHandler = new SelectUserTableHandler();
+    return selectUserTableHandler.selectElement(table);
+    }
     public void createUser(User user) {
         createUserHandler.execute(user);
     }

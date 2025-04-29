@@ -46,10 +46,8 @@ public class SignUp extends javax.swing.JFrame {
         txtLastName = new javax.swing.JTextField();
         btnSingUp = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
         JBoxCarrer = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,14 +62,14 @@ public class SignUp extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -143,19 +141,10 @@ public class SignUp extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
-        jLabel8.setText("Password:");
-
         JBoxCarrer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Tec. en Sistemas", "Tec. en Gestión de Calidad", "Adm. Turística y Hotelera", "Ing. en Sistemas", "Ing. Industrial", "Derecho", "Adm. de Empresas", "Contaduría", "Lic. en Bilingüismo", "Inglés Diario", "Inglés Intensivo", "Inglés Semestral", "Inglés Sábados", "Inglés Niños y Adolescentes", "Prog. de Traducción", "Prog. Aux. Administrativo", "Especializacion" }));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         jLabel9.setText("Carrer:");
-
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -178,9 +167,7 @@ public class SignUp extends javax.swing.JFrame {
                             .addComponent(btnSingUp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
                             .addComponent(JBoxCarrer, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel8)
-                            .addComponent(txtPassword))))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -213,12 +200,8 @@ public class SignUp extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JBoxCarrer, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JBoxCarrer, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(btnSingUp, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
@@ -283,9 +266,8 @@ public class SignUp extends javax.swing.JFrame {
         String lastName = txtLastName.getText().trim();
         String email = txtEmail.getText().trim();
         String career = JBoxCarrer.getSelectedItem().toString();
-        String password = txtPassword.getText().trim(); // Asegúrate de tenerlo
 
-        if (id.isEmpty() || name.isEmpty() || password.isEmpty()) {
+        if (id.isEmpty() || name.isEmpty() || lastName.isEmpty() || email.isEmpty()) {
             JOptionPane.showMessageDialog(this, "⚠️ Todos los campos son obligatorios");
             return;
         }
@@ -296,7 +278,7 @@ public class SignUp extends javax.swing.JFrame {
         nuevo.setLastName(lastName);
         nuevo.setEmail(email);
         nuevo.setCareer(career);
-        nuevo.setPassword(password);
+        nuevo.setPassword(id);
         nuevo.setPoints(0);
 
         UserFileHandler fileHandler = new UserFileHandler();
@@ -321,10 +303,6 @@ public class SignUp extends javax.swing.JFrame {
         login.setVisible(true);
 
     }//GEN-LAST:event_btnBackActionPerformed
-
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -371,7 +349,6 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -380,6 +357,5 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtName;
-    private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 }

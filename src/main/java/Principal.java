@@ -8,17 +8,11 @@ public class Principal {
 
     public static void main(String[] args) {
         // 🧠 Crear repositorio
-        UserRepository repo = new UserRepository();
-
-        // 📂 Cargar usuarios desde archivo
-        repo.loadUsersFromFile("usuarios.dat");
-
-        // 💾 Guardar usuarios al salir
-        repo.saveUsersToFile("usuarios.dat");
+        UserRepository repo = new UserRepository(); // ✅ Al construirlo ya carga de users.json
 
         // 📃 Mostrar usuarios en consola
         List<User> loadedUsers = repo.getAllUsers();
-        System.out.println("📂 Usuarios cargados desde usuarios.dat:");
+        System.out.println("📂 Usuarios cargados desde users.json:");
         for (User u : loadedUsers) {
             System.out.println(u);
         }
@@ -27,5 +21,8 @@ public class Principal {
         ViewInicial v = new ViewInicial();
         v.setLocationRelativeTo(null);
         v.setVisible(true);
+
+        // 💾 Guardar usuarios al salir (opcional si haces cambios manualmente)
+        // repo.saveUsersToFile(); → Esto NO lo necesitas aquí en main. Se guarda cuando creas, actualizas o eliminas.
     }
 }
