@@ -8,6 +8,7 @@ import service.query.GetAllUsersHandler;
 import service.query.FindUserByIdHandler;
 import model.User;
 import java.util.List;
+import util.LoginRequest;
 
 public class UserController {
 
@@ -24,6 +25,23 @@ public class UserController {
         this.getAllUsersHandler = new GetAllUsersHandler();
         this.findUserByIdHandler = new FindUserByIdHandler();
     }
+    
+    public static String loginController(LoginRequest request) {
+    UserController controller = new UserController();
+    List<User> users = controller.getAllUsers(); // Lee usuarios desde archivo
+
+    if (request.getIdUser().equals("sudo") && request.getPassword().equals("sudo")) {
+        return "admin";
+    }
+
+    for (User user : users) {
+        if (user.getIdUser().equals(request.getIdUser()) && user.getPassword().equals(request.getPassword())) {
+            return "user";
+        }
+    }
+
+    return "NN"; // No encontrado
+}
 
     public void createUser(User user) {
         createUserHandler.execute(user);

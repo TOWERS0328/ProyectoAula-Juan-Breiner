@@ -4,10 +4,14 @@
  */
 package view.publico;
 
+import controller.ProfileController;
+import controller.UserController;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.User;
 import repository.user.UserFileHandler;
+import util.LoginRequest;
+import view.privated.admin.AdministradorPanel;
 
 /**
  *
@@ -52,12 +56,14 @@ public class Login extends javax.swing.JFrame {
 
         jPanel3.setPreferredSize(new java.awt.Dimension(400, 500));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/login4.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -65,7 +71,7 @@ public class Login extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -132,7 +138,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnBack, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -209,8 +215,17 @@ public class Login extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String idUser = txtId.getText().trim();
         String password = txtPass.getText().trim();
+        
+        if (idUser.isEmpty() || password.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "❌ Todos los campos son obligatorios");
+        return;
+    }
 
-        UserFileHandler fileHandler = new UserFileHandler();
+    LoginRequest loginRequest = new LoginRequest(idUser, password);
+    String response = UserController.loginController(loginRequest);
+    redirection(response);
+
+        /*UserFileHandler fileHandler = new UserFileHandler();
         List<User> users = fileHandler.readFromFile();
 
         boolean found = false;
@@ -233,7 +248,8 @@ public class Login extends javax.swing.JFrame {
 
         if (!found) {
             JOptionPane.showMessageDialog(this, "❌ Usuario o contraseña incorrectos");
-        }
+        }*/
+        
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -264,6 +280,22 @@ public class Login extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    private void redirection(String response) {
+    if (response.equals("NN")) {
+        JOptionPane.showMessageDialog(null, "❌ Usuario o contraseña incorrectos");
+    } else if (response.equalsIgnoreCase("admin")) {
+        this.dispose();
+        AdministradorPanel adminPanel = new AdministradorPanel();
+        adminPanel.setLocationRelativeTo(null);
+        adminPanel.setVisible(true);
+    } else if (response.equalsIgnoreCase("user")) {
+        this.dispose();
+        ProfileController.setCedula(txtId.getText());
+        UsersView usersView = new UsersView();
+        usersView.setLocationRelativeTo(null);
+        usersView.setVisible(true);
+    }
+}
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

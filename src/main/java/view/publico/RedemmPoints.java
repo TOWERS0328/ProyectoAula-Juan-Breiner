@@ -17,12 +17,7 @@ public class RedemmPoints extends javax.swing.JFrame {
  *
  * @author Breiner
  */
-public class RedeemPoints extends javax.swing.JFrame {
-private User user;
-public RedeemPoints(User user) {
-    initComponents();
-    this.user = user;
-}
+
 
 
     /**
@@ -217,8 +212,8 @@ public RedeemPoints(User user) {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        this.dispose();
-        UsersView user = new UsersView(this.user);
+         this.dispose();
+        UsersView user = new UsersView();
         user.setLocationRelativeTo(null);
         user.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
@@ -295,4 +290,4 @@ public RedeemPoints(User user) {
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtYourPoints;
     // End of variables declaration//GEN-END:variables
-}}
+}

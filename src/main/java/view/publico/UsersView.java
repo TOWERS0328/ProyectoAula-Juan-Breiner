@@ -10,11 +10,11 @@ import model.User;
 public class UsersView extends javax.swing.JFrame {
 
     
-    private User user;
-    public UsersView(User user) {
-       this.user = user;
-    initComponents();    }
-
+    public UsersView() {
+        initComponents();
+        this.setLocationRelativeTo(null);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -246,14 +246,22 @@ public class UsersView extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        
         /* Create and display the form */
-        User user= new User();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UsersView(user).setVisible(true);
+                new UsersView().setVisible(true);
+             
             }
         });
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
