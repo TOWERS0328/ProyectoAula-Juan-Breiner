@@ -1,11 +1,11 @@
 
 package controller;
 
-import service.command.CreateUserHandler;
-import service.command.UpdateUserHandler;
-import service.command.DeleteUserHandler;
-import service.query.GetAllUsersHandler;
-import service.query.FindUserByIdHandler;
+import service.user.command.CreateUserHandler;
+import service.user.command.UpdateUserHandler;
+import service.user.command.DeleteUserHandler;
+import service.user.query.GetAllUsersHandler;
+import service.user.query.FindUserByIdHandler;
 import model.User;
 import java.util.List;
 import javax.swing.JTable;
@@ -59,15 +59,17 @@ public class UserController {
     return selectUserTableHandler.selectElement(table);
     }
     public void createUser(User user) {
-        createUserHandler.execute(user);
-    }
+    createUserHandler.insert(user);
+}
 
     public void updateUser(User user) {
-        updateUserHandler.execute(user);
-    }
+    updateUserHandler.Update(user, null);
+}
 
     public void deleteUser(String userId) {
-        deleteUserHandler.execute(userId);
+        User user = new User();  // Creamos un usuario con el ID a eliminar
+        user.setIdUser(userId);  // Establecemos el ID del usuario a eliminar
+        deleteUserHandler.Delete(user);  // Ejecutamos el comando de eliminación
     }
 
     public List<User> getAllUsers() {

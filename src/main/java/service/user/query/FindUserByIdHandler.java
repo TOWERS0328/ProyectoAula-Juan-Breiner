@@ -1,4 +1,4 @@
-package service.query;
+package service.user.query;
 
 import model.User;
 import repository.user.UserRepository;
