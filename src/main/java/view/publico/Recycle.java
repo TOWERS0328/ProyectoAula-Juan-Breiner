@@ -70,7 +70,7 @@ public class Recycle extends javax.swing.JFrame {
                 btnBack1ActionPerformed(evt);
             }
         });
-        jPanel4.add(btnBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(733, 13, 67, -1));
+        jPanel4.add(btnBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 67, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(128, 204, 40));
@@ -175,7 +175,10 @@ public class Recycle extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
-        // TODO add your handling code here:
+        dispose(); // Cierra ProfileUser
+        UsersView usersView = new UsersView();
+        usersView.setLocationRelativeTo(null);
+        usersView.setVisible(true);
     }//GEN-LAST:event_btnBack1ActionPerformed
 
     /**
