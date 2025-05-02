@@ -10,6 +10,7 @@ import model.User;
 import java.util.List;
 import javax.swing.JTable;
 import repository.user.UserFileHandler;
+import service.user.query.FindUserOnlyByIdHandler;
 import service.user.util.helpers.SelectUserTableHandler;
 import service.user.util.helpers.ShowUserAndCreateTableHandler;
 import util.LoginRequest;
@@ -21,6 +22,7 @@ public class UserController {
     private final DeleteUserHandler deleteUserHandler;
     private final GetAllUsersHandler getAllUsersHandler;
     private final FindUserByIdHandler findUserByIdHandler;
+    private final FindUserOnlyByIdHandler findUserOnlyByIdHandler;
 
     public UserController() {
         this.createUserHandler = new CreateUserHandler();
@@ -28,6 +30,7 @@ public class UserController {
         this.deleteUserHandler = new DeleteUserHandler();
         this.getAllUsersHandler = new GetAllUsersHandler();
         this.findUserByIdHandler = new FindUserByIdHandler();
+        this.findUserOnlyByIdHandler = new FindUserOnlyByIdHandler();
     }
     
     public static String loginController(LoginRequest request) {
@@ -74,6 +77,10 @@ public class UserController {
 
     public List<User> getAllUsers() {
         return getAllUsersHandler.execute();
+    }
+    
+    public User getUserById(String id) {
+        return findUserOnlyByIdHandler.findById(id);
     }
 
     public User findUserById(String userId) {

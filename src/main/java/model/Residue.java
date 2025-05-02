@@ -1,29 +1,20 @@
 
 package model;
 
-/**
- *
- * @author juand
- */
 public class Residue {
-     private int id;
     private String code;
     private String type;
+    private String object;
     private int points;
 
-    public Residue(int id, String code, String type, int points) {
-        this.id = id;
+    public Residue() {
+    }
+    
+    public Residue(String code, String type, String object, int points) {
         this.code = code;
         this.type = type;
+        this.object = object;
         this.points = points;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getCode() {
@@ -42,6 +33,14 @@ public class Residue {
         this.type = type;
     }
 
+    public String getObject() {
+        return object;
+    }
+
+    public void setObject(String object) {
+        this.object = object;
+    }
+
     public int getPoints() {
         return points;
     }
@@ -52,7 +51,11 @@ public class Residue {
 
     @Override
     public String toString() {
-        return "Residue{" + "id=" + id + ", code=" + code + ", type=" + type + ", points=" + points + '}';
+        return "Residue{" +
+                "code='" + code + '\'' +
+                ", type='" + type + '\'' +
+                ", object='" + object + '\'' +
+                ", points=" + points +
+                '}';
     }
-    
 }

@@ -14,7 +14,6 @@ public class DeleteUserHandler implements IDelete<User> {
 
     @Override
     public void Delete(User user) {
-        // Eliminar usuario con lógica de comando
         userRepository.deleteUser(user.getIdUser());
         System.out.println("Usuario eliminado exitosamente.");
     }

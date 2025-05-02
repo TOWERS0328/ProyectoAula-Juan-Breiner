@@ -220,17 +220,17 @@ public class AdministradorPanel extends javax.swing.JFrame {
     private void btnObjectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObjectsActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        /*AdministradorResiduo object = new AdministradorResiduo();
+        AdministradorResiduo object = new AdministradorResiduo();
         object.setLocationRelativeTo(null);
-        object.setVisible(true);*/
+        object.setVisible(true);
     }//GEN-LAST:event_btnObjectsActionPerformed
 
     private void btnEstudiante2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstudiante2ActionPerformed
         // TODO add your handling code here:
        this.dispose();
-       /*AdministradorPrizes prizes = new AdministradorPrizes();
-       prizes.setLocationRelativeTo(null);
-       prizes.setVisible(true);*/
+       AdministradorAwards awards = new AdministradorAwards();
+       awards.setLocationRelativeTo(null);
+       awards.setVisible(true);
     }//GEN-LAST:event_btnEstudiante2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
