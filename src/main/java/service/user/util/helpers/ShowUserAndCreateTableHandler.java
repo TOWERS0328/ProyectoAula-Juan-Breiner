@@ -10,49 +10,48 @@ import javax.swing.table.TableRowSorter;
 import java.util.List;
 
 public class ShowUserAndCreateTableHandler implements IShowElementAndCreateTable<User> {
+
     @Override
     public void showTable(JTable table, List<User> list) {
 
-        //table structure
         DefaultTableModel model = new DefaultTableModel() {
-        @Override
-        public boolean isCellEditable(int row, int column) {
-            return false; // Evita la edición de las celdas
-        }
-    };
-        TableRowSorter<TableModel> alphabeticOrder = new TableRowSorter<TableModel>(model);
-        table.setRowSorter(alphabeticOrder);
-        model.addColumn("ID");
-        model.addColumn("Nombre");
-        model.addColumn("Apellido");
-        model.addColumn("Email");
-        model.addColumn("Carrera");
-        model.addColumn("Cedula");
-        model.addColumn("Puntos");
-        table.setModel(model);
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
 
-        //Almacena datos
-        String[] dataList = new String[7];
+        TableRowSorter<TableModel> alphabeticOrder = new TableRowSorter<>(model);
+        table.setRowSorter(alphabeticOrder);
+
+        model.addColumn("Cédula");   
+        model.addColumn("Nombre");   
+        model.addColumn("Apellido"); 
+        model.addColumn("Email");    
+        model.addColumn("Carrera");  
+        model.addColumn("Puntos");  
+
+        table.setModel(model);
 
         try {
             if (list.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Cannot select any user");
+                JOptionPane.showMessageDialog(null, "No users available");
                 return;
-            }else{
-               for (User user : list) {
-                dataList[0] = String.valueOf(user.getId());
-                dataList[1] = String.valueOf(user.getName());
-                dataList[2] = String.valueOf(user.getLastName());
-                dataList[3] = String.valueOf(user.getEmail());
-                dataList[4] = String.valueOf(user.getCareer());
-                dataList[5] = String.valueOf(user.getIdUser());
-                dataList[6] = String.valueOf(user.getPoints());
-                model.addRow(dataList);
-               }
-               table.setModel(model);
+            } else {
+                for (User user : list) {
+                    Object[] dataList = new Object[6];
+                    dataList[0] = user.getIdUser();
+                    dataList[1] = user.getName();
+                    dataList[2] = user.getLastName();
+                    dataList[3] = user.getEmail();
+                    dataList[4] = user.getCareer();
+                    dataList[5] = user.getPoints();
+
+                    model.addRow(dataList);
+                }
             }
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null, e);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error displaying users: " + e.getMessage());
         }
     }
 }

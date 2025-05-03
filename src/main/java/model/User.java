@@ -1,44 +1,34 @@
 package model;
 
-import java.io.Serializable;
+public class User {
 
-/**
- *
- * @author juand
- */
-public class User implements Serializable { // ✅ Implementa Serializable
-    private static final long serialVersionUID = 1L; // ✅ Recomendado para serialización
-
-    private int id;
+    private String idUser;
     private String name;
     private String lastName;
     private String password;
     private String email;
     private String career;
-    private String idUser;
     private int points;
 
     public User() {
-        // Constructor vacío necesario para serialización
     }
 
-    public User(int id, String name, String lastName, String password, String email, String career, String idUser, int points) {
-        this.id = id;
+    public User(String idUser, String name, String lastName, String password, String email, String career, int points) {
+        this.idUser = idUser;
         this.name = name;
         this.lastName = lastName;
         this.password = password;
         this.email = email;
         this.career = career;
-        this.idUser = idUser;
         this.points = points;
     }
 
-    public int getId() {
-        return id;
+    public String getIdUser() {
+        return idUser;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
     }
 
     public String getName() {
@@ -81,14 +71,6 @@ public class User implements Serializable { // ✅ Implementa Serializable
         this.career = career;
     }
 
-    public String getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
-    }
-
     public int getPoints() {
         return points;
     }
@@ -97,18 +79,10 @@ public class User implements Serializable { // ✅ Implementa Serializable
         this.points = points;
     }
 
-   
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", career='" + career + '\'' +
-                ", idUser='" + idUser + '\'' +
-                ", points=" + points +
-                '}';
+        return "User{" + "idUser=" + idUser + ", name=" + name + ", lastName=" + lastName + ", password=" + password + ", email=" + email + ", career=" + career + ", points=" + points + '}';
     }
+
+    
 }

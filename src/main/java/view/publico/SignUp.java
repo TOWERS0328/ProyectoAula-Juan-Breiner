@@ -4,10 +4,14 @@
  */
 package view.publico;
 
+import Interface.utils.validations.IEmailValidation;
+import controller.UserController;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.User;
 import repository.user.UserFileHandler;
+import service.user.util.validations.EmailValidationHandler;
+import service.user.util.validations.ValidationExistUserById;
 
 /**
  *
@@ -261,38 +265,55 @@ public class SignUp extends javax.swing.JFrame {
     }//GEN-LAST:event_txtLastNameKeyTyped
 
     private void btnSingUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSingUpActionPerformed
-        String id = txtID.getText().trim();
         String name = txtName.getText().trim();
         String lastName = txtLastName.getText().trim();
         String email = txtEmail.getText().trim();
         String career = JBoxCarrer.getSelectedItem().toString();
+        String idUser = txtID.getText().trim();
 
-        if (id.isEmpty() || name.isEmpty() || lastName.isEmpty() || email.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "⚠️ Todos los campos son obligatorios");
+        ValidationExistUserById validator = new ValidationExistUserById();
+        if (validator.exist(idUser)) {
+            JOptionPane.showMessageDialog(this, "❌ Ya existe un usuario con esa cédula");
             return;
         }
 
-        User nuevo = new User();
-        nuevo.setIdUser(id);
-        nuevo.setName(name);
-        nuevo.setLastName(lastName);
-        nuevo.setEmail(email);
-        nuevo.setCareer(career);
-        nuevo.setPassword(id);
-        nuevo.setPoints(0);
-
-        UserFileHandler fileHandler = new UserFileHandler();
-        List<User> users = fileHandler.readFromFile();
-
-        boolean exists = users.stream().anyMatch(u -> u.getIdUser().equals(id));
-        if (exists) {
-            JOptionPane.showMessageDialog(this, "❌ Ya existe un usuario con esa cédula");
-        } else {
-            users.add(nuevo);
-            fileHandler.saveToFile(users);
-            JOptionPane.showMessageDialog(this, "✅ Usuario registrado correctamente");
-            // Podrías volver a la pantalla de login aquí
+        if (career.equals("Select")) {
+            JOptionPane.showMessageDialog(this, "⚠️ Debes seleccionar una carrera");
+            return;
         }
+
+        IEmailValidation emailValidator = new EmailValidationHandler();
+        if (!emailValidator.isEmailValid(email)) {
+            JOptionPane.showMessageDialog(this, "❌ Correo electrónico no válido");
+            txtEmail.requestFocus();
+            return;
+        }
+
+        if (!idUser.matches("\\d{8,10}")) {
+            JOptionPane.showMessageDialog(this, "⚠️ La cédula debe tener entre 8 y 10 dígitos");
+            txtID.requestFocus();
+            return;
+        }
+
+        User user = new User();
+        user.setIdUser(idUser);
+        user.setName(name);
+        user.setLastName(lastName);
+        user.setEmail(email);
+        user.setCareer(career);
+        user.setPassword(idUser); // Contraseña inicial igual al ID
+        user.setPoints(0);
+
+        UserController userController = new UserController();
+        userController.createUser(user);
+
+        JOptionPane.showMessageDialog(this, "✅ Usuario registrado correctamente");
+
+        limpiar();
+        this.dispose();
+        Login login = new Login();
+        login.setLocationRelativeTo(null);
+        login.setVisible(true);
     }//GEN-LAST:event_btnSingUpActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -303,7 +324,14 @@ public class SignUp extends javax.swing.JFrame {
         login.setVisible(true);
 
     }//GEN-LAST:event_btnBackActionPerformed
-
+    
+    public void limpiar() {
+        txtName.setText("");
+        txtLastName.setText("");
+        txtEmail.setText("");
+        txtID.setText("");
+        JBoxCarrer.setSelectedIndex(0);
+    }
     /**
      * @param args the command line arguments
      */

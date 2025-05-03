@@ -1,30 +1,19 @@
-
 package model;
 
-/**
- *
- * @author juand
- */
 public class Award {
-    
-     private int id;
     private String code;
     private String name;
+    private String category;
     private int points;
 
-    public Award(int id, String code, String name, int points) {
-        this.id = id;
+    public Award() {
+    }
+
+    public Award(String code, String name, String category, int points) {
         this.code = code;
         this.name = name;
+        this.category = category;
         this.points = points;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getCode() {
@@ -43,6 +32,14 @@ public class Award {
         this.name = name;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     public int getPoints() {
         return points;
     }
@@ -53,7 +50,8 @@ public class Award {
 
     @Override
     public String toString() {
-        return "Award{" + "id=" + id + ", code=" + code + ", name=" + name + ", points=" + points + '}';
+        return "Award{" + "code=" + code + ", name=" + name + ", category=" + category + ", points=" + points + '}';
     }
 
+    
 }

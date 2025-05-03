@@ -4,6 +4,7 @@
  */
 package view.privated.admin;
 
+import Interface.utils.validations.IEmailValidation;
 import controller.UserController;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
@@ -13,6 +14,8 @@ import javax.swing.RowFilter;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import model.User;
+import service.user.util.validations.EmailValidationHandler;
+import service.user.util.validations.ValidationExistUserById;
 
 public class AdministradorStudent extends javax.swing.JFrame {
 
@@ -775,51 +778,54 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
     private void btnInterUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInterUpdateActionPerformed
         // TODO add your handling code here:
-    String name = txtNameM.getText();
-    String lastName = txtLastNameM.getText();
-    String email = txtEmailM.getText();
-    String idUser = txtIDM.getText(); // el nuevo ID que pondrán (si cambian)
-    String career = CareerUpdate.getSelectedItem().toString();
-    String cedula = IDCurrent.getText(); // ID actual del usuario en la base
-    UserController userController = new UserController();
+        String name = txtNameM.getText();
+        String lastName = txtLastNameM.getText();
+        String email = txtEmailM.getText();
+        String idUser = txtIDM.getText();
+        String career = CareerUpdate.getSelectedItem().toString();
+        String cedula = IDCurrent.getText();
+        UserController userController = new UserController();
 
-    // Validaciones
-    if (career.equals("Select")) {
-        JOptionPane.showMessageDialog(null, "You must select a career");
-    } else {
-        if (EmailValid(email)) {
-            if (idUser.matches("\\d{8,10}")) {
-                // Buscamos el usuario original
-                User userToUpdate = userController.findUserById(cedula);
-
-                if (userToUpdate != null) {
-                    // Actualizamos los datos del usuario
-                    userToUpdate.setName(name);
-                    userToUpdate.setLastName(lastName);
-                    userToUpdate.setEmail(email);
-                    userToUpdate.setIdUser(idUser); // permites cambiar el ID
-                    userToUpdate.setCareer(career);
-
-                    // Mandamos a actualizar
-                    userController.updateUser(userToUpdate);
-
-                    limpiar();
-                } else {
-                    JOptionPane.showMessageDialog(null, "User not found");
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "User ID must be between 8 and 10 digits");
-                txtIDM.requestFocus();
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Invalid email");
-            txtEmailM.requestFocus();
+        if (!ValidationUtils.validateEmptyFields(name, lastName, email, idUser, cedula)) {
+            JOptionPane.showMessageDialog(null, "Todos los campos deben estar completos");
+            return;
         }
-    }
-    updateM();
 
-    // Refrescar tabla
-    UserController.ShowUserController(tbUpdate);
+        if (career.equals("Select")) {
+            JOptionPane.showMessageDialog(null, "Debes seleccionar una carrera");
+            return;
+        }
+        IEmailValidation emailValidator = new EmailValidationHandler();
+        if (!emailValidator.isEmailValid(email)) {
+            JOptionPane.showMessageDialog(null, "Correo electrónico inválido");
+            txtEmailM.requestFocus();
+            return;
+        }
+
+        if (!idUser.matches("\\d{8,10}")) {
+            JOptionPane.showMessageDialog(null, "El ID del usuario debe tener entre 8 y 10 dígitos");
+            txtIDM.requestFocus();
+            return;
+        }
+
+        User userToUpdate = userController.findUserById(cedula);
+
+        if (userToUpdate != null) {
+            userToUpdate.setName(name);
+            userToUpdate.setLastName(lastName);
+            userToUpdate.setEmail(email);
+            userToUpdate.setIdUser(idUser);
+            userToUpdate.setCareer(career);
+
+            userController.updateUser(userToUpdate);
+            limpiar();
+
+            UserController.ShowUserController(tbUpdate);
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+        }
+
+        updateM();
 
     }//GEN-LAST:event_btnInterUpdateActionPerformed
 
@@ -862,11 +868,17 @@ public class AdministradorStudent extends javax.swing.JFrame {
     String idUser = txtID.getText();
     
     // Verificar que se haya seleccionado una carrera
+    ValidationExistUserById validator = new ValidationExistUserById();
+
+    if (validator.exist(idUser)) {
+        JOptionPane.showMessageDialog(null, "El ID ya está registrado por otro usuario.");
+        return;
+    }
     if (career.equals("Select")) {
         JOptionPane.showMessageDialog(null, "You must select a career");
     } else {
-        // Validar el correo electrónico
-        if (EmailValid(email)) {
+        IEmailValidation emailValidator = new EmailValidationHandler();
+        if (emailValidator.isEmailValid(email)) {
             // Validar que el ID del usuario sea numérico y tenga entre 8 y 10 dígitos
             if (idUser.matches("\\d{8,10}")) {
                 // Crear el objeto User directamente con los datos proporcionados
@@ -1009,6 +1021,19 @@ public class AdministradorStudent extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
+    public class ValidationUtils {
+
+    public static boolean validateEmptyFields(String... fields) {
+        for (String field : fields) {
+            if (field == null || field.trim().isEmpty()) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         
@@ -1071,15 +1096,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
                 new AdministradorStudent().setVisible(true);
             }
         });
-    }
-    
-    public boolean EmailValid(String email) {
-        int cantidadArrobas = email.length() - email.replace("@", "").length();
-        if (cantidadArrobas != 1) {
-        return false;
-    }
-        String regex = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
-        return email.matches(regex);
     }
     
     public void agregarFiltroTiempoReal(JTable table, JTextField textField, int columnIndex) {
