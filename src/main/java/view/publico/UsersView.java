@@ -1,6 +1,9 @@
 
 package view.publico;
 
+import java.awt.Component;
+import java.awt.Window;
+import javax.swing.SwingUtilities;
 import model.User;
 
 /**
@@ -197,10 +200,12 @@ public class UsersView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void btnRecycleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecycleActionPerformed
-        this.dispose();
-        Recycle recycle = new Recycle();
-        recycle.setLocationRelativeTo(null);
-        recycle.setVisible(true);
+             this.dispose(); // Cierra la ventana actual
+
+    // Abre la ventana Recycle
+    Recycle recycle = new Recycle();
+    recycle.setLocationRelativeTo(null);
+    recycle.setVisible(true);
     }//GEN-LAST:event_btnRecycleActionPerformed
 
     private void btnRedeemPointsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedeemPointsActionPerformed

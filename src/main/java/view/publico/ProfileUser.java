@@ -423,11 +423,6 @@ public class ProfileUser extends javax.swing.JFrame {
         user.setVisible(true);
         ProfileController.setCedula(cedulaC.getText());
 
-         dispose(); // Cierra ProfileUser
-        UsersView usersView = new UsersView();
-        usersView.setLocationRelativeTo(null);
-        usersView.setVisible(true);
-     
 
     }//GEN-LAST:event_btnBackActionPerformed
 
