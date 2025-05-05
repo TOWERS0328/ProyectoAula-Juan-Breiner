@@ -1,6 +1,7 @@
 package repository.user;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import model.User;
 
@@ -21,15 +22,21 @@ public class UserFileHandler {
         }
     }
 
-    public List<User> readFromFile() {
-        try (Reader reader = new FileReader(FILE_NAME)) {
-            Type userListType = new TypeToken<ArrayList<User>>() {}.getType();
-            return gson.fromJson(reader, userListType);
-        } catch (FileNotFoundException e) {
-            return new ArrayList<>();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new ArrayList<>();
-        }
+
+   
+
+     public List<User> readFromFile() {
+
+    try (Reader reader = new FileReader(FILE_NAME)) {
+        Type userListType = new TypeToken<ArrayList<User>>() {}.getType();
+        return gson.fromJson(reader, userListType);
+    } catch (JsonSyntaxException | IllegalStateException e) {
+        System.err.println("Formato JSON inválido en " + FILE_NAME + ": " + e.getMessage());
+        return new ArrayList<>();
+    } catch (IOException e) {
+        e.printStackTrace();
+        return new ArrayList<>();
     }
+}
+
 }

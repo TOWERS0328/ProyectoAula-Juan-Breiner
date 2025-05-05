@@ -21,6 +21,7 @@ service\award\command\UpdateAwardHandler.class
 view\privated\admin\AdministradorAwards.class
 model\Award.class
 view\publico\SignUp$4.class
+view\publico\Recycle$3.class
 view\privated\admin\AdministradorStudent.class
 view\privated\admin\AdministradorResiduo$19.class
 service\user\query\FindUserByIdHandler.class

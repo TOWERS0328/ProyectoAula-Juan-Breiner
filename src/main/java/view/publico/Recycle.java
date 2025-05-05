@@ -100,6 +100,11 @@ public class Recycle extends javax.swing.JFrame {
         jPanel3.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 185, 260, -1));
 
         btnSearch.setPreferredSize(new java.awt.Dimension(33, 5));
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
         jPanel3.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, -1, 30));
 
         tbResidues.setModel(new javax.swing.table.DefaultTableModel(
@@ -180,6 +185,10 @@ public class Recycle extends javax.swing.JFrame {
         usersView.setLocationRelativeTo(null);
         usersView.setVisible(true);
     }//GEN-LAST:event_btnBack1ActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     /**
      * @param args the command line arguments

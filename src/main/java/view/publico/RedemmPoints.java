@@ -17,7 +17,10 @@ public class RedemmPoints extends javax.swing.JFrame {
  *
  * @author Breiner
  */
-
+      public RedemmPoints() {
+        initComponents(); 
+        setLocationRelativeTo(null); 
+    }
 
 
     /**

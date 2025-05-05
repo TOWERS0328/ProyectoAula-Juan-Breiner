@@ -422,11 +422,12 @@ public class ProfileUser extends javax.swing.JFrame {
         user.setLocationRelativeTo(null);
         user.setVisible(true);
         ProfileController.setCedula(cedulaC.getText());
+
          dispose(); // Cierra ProfileUser
         UsersView usersView = new UsersView();
         usersView.setLocationRelativeTo(null);
         usersView.setVisible(true);
-     
+
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void txtPointsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPointsActionPerformed
