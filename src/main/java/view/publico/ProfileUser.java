@@ -416,19 +416,17 @@ public class ProfileUser extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-<<<<<<< HEAD
+
         this.dispose();
         UsersView user = new UsersView();
         user.setLocationRelativeTo(null);
         user.setVisible(true);
         ProfileController.setCedula(cedulaC.getText());
-=======
          dispose(); // Cierra ProfileUser
         UsersView usersView = new UsersView();
         usersView.setLocationRelativeTo(null);
         usersView.setVisible(true);
      
->>>>>>> validations
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void txtPointsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPointsActionPerformed
