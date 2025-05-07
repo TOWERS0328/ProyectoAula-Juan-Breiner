@@ -416,10 +416,11 @@ public class ProfileUser extends javax.swing.JFrame {
         
         ValidationExistUserById validator = new ValidationExistUserById();
 
-        if (validator.exist(cedula)) {
-            JOptionPane.showMessageDialog(null, "El ID ya esta registrado por otro usuario.");
-            return;
+         if (!cedula.equals(cedulaActual) && validator.exist(cedula)) {
+          JOptionPane.showMessageDialog(null, "El ID ya está registrado por otro usuario.");
+           return;
         }
+
         
         User actualUser = ProfileController.getProfile();
         if (actualUser == null) {
@@ -429,7 +430,7 @@ public class ProfileUser extends javax.swing.JFrame {
 
         int currentPoints = actualUser.getPoints();
 
-        User updated = new User(cedula, name, lastName, password, email, career, 0);
+        User updated = new User(cedula, name, lastName, password, email, career, currentPoints);
         ProfileController.updateProfile(updated, cedulaActual);
         cedulaC.setText(cedula);
     }//GEN-LAST:event_btnModifyActionPerformed
