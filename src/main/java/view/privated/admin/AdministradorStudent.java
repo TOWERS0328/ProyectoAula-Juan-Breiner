@@ -332,6 +332,8 @@ public class AdministradorStudent extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/ecology (3).png"))); // NOI18N
+
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Career:");
 
@@ -561,14 +563,14 @@ public class AdministradorStudent extends javax.swing.JFrame {
                         .addComponent(btnInterUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnUpdateLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 2, Short.MAX_VALUE)
                         .addComponent(TableUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(62, 62, 62))
                     .addGroup(pnUpdateLayout.createSequentialGroup()
                         .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(pnUpdateLayout.createSequentialGroup()
-                                .addComponent(IDCurrent, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(IDCurrent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
                                 .addComponent(jLabel3))
                             .addGroup(pnUpdateLayout.createSequentialGroup()
                                 .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -597,7 +599,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
         pnUpdateLayout.setVerticalGroup(
             pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnUpdateLayout.createSequentialGroup()
-                .addContainerGap(94, Short.MAX_VALUE)
+                .addContainerGap(93, Short.MAX_VALUE)
                 .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -630,14 +632,14 @@ public class AdministradorStudent extends javax.swing.JFrame {
                         .addComponent(btnInterUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TableUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pnChanging.addTab("", pnUpdate);
 
         pnDelete.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel14.setText("Select the waste to eliminate");
+        jLabel14.setText("Select the user to eliminate");
 
         btnInterDelete.setText("DELETE");
         btnInterDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -698,14 +700,14 @@ public class AdministradorStudent extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtIDe, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtIDe, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnDeleteLayout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addComponent(TableDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnDeleteLayout.createSequentialGroup()
                         .addGap(195, 195, 195)
                         .addComponent(btnInterDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         pnDeleteLayout.setVerticalGroup(
             pnDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -797,7 +799,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
         }
         IEmailValidation emailValidator = new EmailValidationHandler();
         if (!emailValidator.isEmailValid(email)) {
-            JOptionPane.showMessageDialog(null, "Correo electrónico inválido");
+            JOptionPane.showMessageDialog(null, "Correo electronico inválido");
             txtEmailM.requestFocus();
             return;
         }
@@ -805,6 +807,13 @@ public class AdministradorStudent extends javax.swing.JFrame {
         if (!idUser.matches("\\d{8,10}")) {
             JOptionPane.showMessageDialog(null, "El ID del usuario debe tener entre 8 y 10 dígitos");
             txtIDM.requestFocus();
+            return;
+        }
+        
+        ValidationExistUserById validator = new ValidationExistUserById();
+
+        if (validator.exist(idUser)) {
+            JOptionPane.showMessageDialog(null, "El ID ya esta registrado por otro usuario.");
             return;
         }
 
@@ -888,12 +897,12 @@ public class AdministradorStudent extends javax.swing.JFrame {
                 user.setEmail(email);
                 user.setCareer(career);
                 user.setIdUser(idUser);
+                user.setPassword(idUser);
                 
                 // Llamar al controlador para crear el usuario
                 UserController userController = new UserController();
                 userController.createUser(user); // Asegúrate que el método en el controlador sea 'createUser'
-                
-                // Limpiar los campos después de crear el usuario
+                JOptionPane.showMessageDialog(null, "Usuario creado exitosamente");
                 limpiar();
             } else {
                 JOptionPane.showMessageDialog(null, "User ID must be between 8 and 10 digits");

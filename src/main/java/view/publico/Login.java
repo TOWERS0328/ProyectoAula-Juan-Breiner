@@ -24,6 +24,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        setSize(815,535);
     }
 
     /**
@@ -62,15 +63,11 @@ public class Login extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -224,31 +221,6 @@ public class Login extends javax.swing.JFrame {
     LoginRequest loginRequest = new LoginRequest(idUser, password);
     String response = UserController.loginController(loginRequest);
     redirection(response);
-
-        /*UserFileHandler fileHandler = new UserFileHandler();
-        List<User> users = fileHandler.readFromFile();
-
-        boolean found = false;
-
-        for (User user : users) {
-            if (user.getIdUser().equals(idUser) && user.getPassword().equals(password)) {
-                found = true;
-                JOptionPane.showMessageDialog(this, "✅ Bienvenido/a " + user.getName());
-
-                // Cerrar login actual
-                this.dispose();
-
-                // Abrir UsersView con el usuario autenticado
-                UsersView vista = new UsersView(user);  // Asegúrate de tener un constructor que reciba User
-                vista.setLocationRelativeTo(null);
-                vista.setVisible(true);
-                break;
-            }
-        }
-
-        if (!found) {
-            JOptionPane.showMessageDialog(this, "❌ Usuario o contraseña incorrectos");
-        }*/
         
     }//GEN-LAST:event_btnLoginActionPerformed
 

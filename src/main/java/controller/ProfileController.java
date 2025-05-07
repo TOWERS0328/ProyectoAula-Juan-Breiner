@@ -52,6 +52,30 @@ public class ProfileController {
 
         JOptionPane.showMessageDialog(null, "User not found. No changes made.");
     }
+    
+    public static void insertPoints(int pointsToAdd) {
+    if (cedula == null || cedula.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "No user ID found in session.");
+        return;
+    }
+
+    UserFileHandler handler = new UserFileHandler();
+    List<User> users = handler.readFromFile();
+
+    for (int i = 0; i < users.size(); i++) {
+        User user = users.get(i);
+        if (user.getIdUser().equals(cedula)) {
+            int currentPoints = user.getPoints(); // Asegúrate de tener este getter
+            user.setPoints(currentPoints + pointsToAdd); // Asegúrate de tener este setter
+            users.set(i, user);
+            handler.saveToFile(users);
+            JOptionPane.showMessageDialog(null, "Points added successfully.");
+            return;
+        }
+    }
+
+    JOptionPane.showMessageDialog(null, "User not found. Points not added.");
+}
 }
     
     

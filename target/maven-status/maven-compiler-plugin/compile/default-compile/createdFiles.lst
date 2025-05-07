@@ -29,6 +29,7 @@ view\privated\admin\AdministradorStudent$12.class
 model\Residue.class
 service\residue\query\GetAllResiduesHandler.class
 Interface\command\IUpdate.class
+view\publico\Recycle$8.class
 Interface\utils\helpers\ICalculatePoints.class
 view\privated\admin\AdministradorResiduo$1.class
 view\privated\admin\AdministradorResiduo$13.class
@@ -123,6 +124,7 @@ view\publico\SignUp$1.class
 view\privated\admin\AdministradorStudent$15.class
 view\privated\admin\AdministradorStudent$9.class
 view\privated\admin\AdministradorResiduo$16.class
+view\publico\Recycle$6.class
 view\privated\admin\AdministradorResiduo$24.class
 view\privated\admin\AdministradorStudent$27.class
 view\privated\admin\AdministradorAwards$5.class
@@ -154,6 +156,7 @@ view\privated\admin\AdministradorStudent$19.class
 view\privated\admin\AdministradorResiduo$25.class
 view\privated\admin\AdministradorStudent$26.class
 view\privated\admin\AdministradorResiduo$15.class
+view\publico\Recycle$7.class
 service\award\query\FindAwardByCodeHandler.class
 controller\ProfileController.class
 view\privated\admin\AdministradorAwards$12.class
@@ -170,6 +173,7 @@ view\privated\admin\AdministradorPanel$3.class
 view\privated\admin\AdministradorAwards$11.class
 view\privated\admin\AdministradorResiduo$23.class
 view\privated\admin\AdministradorStudent$24.class
+view\publico\Recycle$5.class
 service\residue\command\CreateResidueHandler.class
 repository\user\UserRepository.class
 repository\residue\ResidueFileHandler.class
@@ -180,6 +184,7 @@ service\user\util\helpers\ShowUserAndCreateTableHandler.class
 view\privated\admin\AdministradorResiduo$22.class
 view\privated\admin\AdministradorPanel$5.class
 view\privated\admin\AdministradorAwards$10.class
+view\publico\Recycle$4.class
 view\privated\admin\AdministradorResiduo$17.class
 view\privated\admin\AdministradorStudent$25.class
 view\privated\admin\AdministradorStudent$4.class

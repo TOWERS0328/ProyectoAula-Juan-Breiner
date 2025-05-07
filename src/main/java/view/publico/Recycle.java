@@ -4,6 +4,18 @@
  */
 package view.publico;
 
+import controller.ProfileController;
+import controller.ResidueController;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import model.Residue;
+import model.User;
+
 /**
  *
  * @author juand
@@ -15,6 +27,11 @@ public class Recycle extends javax.swing.JFrame {
      */
     public Recycle() {
         initComponents();
+        ResidueController.showResidueController(tbResidues);
+        YourPoints();
+        txtYourPoints.setEnabled(false);
+        txtRecyclePoints.setEnabled(false);
+        txtTotalPoints.setEnabled(false);
     }
 
     /**
@@ -60,6 +77,8 @@ public class Recycle extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(10, 49, 48));
         jPanel4.setPreferredSize(new java.awt.Dimension(467, 117));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/logo4.png"))); // NOI18N
         jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 80, 110));
 
         btnBack1.setBackground(new java.awt.Color(85, 140, 54));
@@ -118,6 +137,11 @@ public class Recycle extends javax.swing.JFrame {
 
             }
         ));
+        tbResidues.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbResiduesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbResidues);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 217, 300, 242));
@@ -141,16 +165,34 @@ public class Recycle extends javax.swing.JFrame {
         jLabel16.setText("Total Points:");
         jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 87, -1));
         jPanel3.add(txtYourPoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 88, -1));
+
+        txtWeight.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtWeightKeyTyped(evt);
+            }
+        });
         jPanel3.add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 88, -1));
         jPanel3.add(txtTotalPoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 88, -1));
         jPanel3.add(txtRecyclePoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, 88, -1));
 
         btnCalculate.setText("CALCULATE");
+        btnCalculate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalculateActionPerformed(evt);
+            }
+        });
         jPanel3.add(btnCalculate, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 144, 45));
 
         btnRecycle.setText("RECYCLE");
+        btnRecycle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecycleActionPerformed(evt);
+            }
+        });
         jPanel3.add(btnRecycle, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, 144, 45));
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 250, 241));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/recicle2.jpg"))); // NOI18N
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 171, 250, 260));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -180,16 +222,72 @@ public class Recycle extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
-        dispose(); // Cierra ProfileUser
+        dispose();
         UsersView usersView = new UsersView();
         usersView.setLocationRelativeTo(null);
         usersView.setVisible(true);
     }//GEN-LAST:event_btnBack1ActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        // TODO add your handling code here:
+        addFilter(tbResidues, txtSearch, 2);
     }//GEN-LAST:event_btnSearchActionPerformed
 
+    private void btnCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateActionPerformed
+        if (!validador()) return;
+        int total = Calculate();
+        txtTotalPoints.setText(total + "");
+    }//GEN-LAST:event_btnCalculateActionPerformed
+
+    private void tbResiduesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbResiduesMouseClicked
+        Residue r = ResidueController.selectResidueController(tbResidues);
+        txtRecyclePoints.setText(String.valueOf(r.getPoints()));
+    }//GEN-LAST:event_tbResiduesMouseClicked
+
+    private void btnRecycleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecycleActionPerformed
+        if (!validador()) return;
+        int total = Calculate();
+        ProfileController.insertPoints(total);
+        JOptionPane.showMessageDialog(null, "Recycle successfully");
+
+        this.dispose(); 
+        UsersView view = new UsersView();
+        view.setLocationRelativeTo(null);
+        view.setVisible(true);
+
+    }//GEN-LAST:event_btnRecycleActionPerformed
+
+    private void txtWeightKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtWeightKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c) && c != '.' && c != KeyEvent.VK_BACK_SPACE) {
+            evt.consume();
+        }
+
+        if (c == '.' && txtWeight.getText().contains(".")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtWeightKeyTyped
+    
+    private void YourPoints() {
+        User u = ProfileController.getProfile();
+        txtYourPoints.setText(String.valueOf(u.getPoints()));
+    }
+
+    private boolean validador() {
+        if (txtYourPoints.getText().equals("") || txtRecyclePoints.getText().equals("") || txtWeight.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Ingrese un valor valido");
+            return false;
+        }
+        return true;
+    }
+
+    private int Calculate() {
+
+            int yourPoints = Integer.parseInt(txtYourPoints.getText());
+            int recyclePoints = Integer.parseInt(txtRecyclePoints.getText());
+            double weight = Double.parseDouble(txtWeight.getText());
+            return (int) Math.round(yourPoints + (recyclePoints * weight));
+
+    }
     /**
      * @param args the command line arguments
      */
@@ -221,6 +319,37 @@ public class Recycle extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Recycle().setVisible(true);
+            }
+        });
+    }
+    
+    public void addFilter(JTable table, JTextField textField, int columnIndex) {
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
+        table.setRowSorter(rowSorter);
+
+        textField.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            @Override
+            public void insertUpdate(javax.swing.event.DocumentEvent e) {
+                filtrar();
+            }
+
+            @Override
+            public void removeUpdate(javax.swing.event.DocumentEvent e) {
+                filtrar();
+            }
+
+            @Override
+            public void changedUpdate(javax.swing.event.DocumentEvent e) {
+                filtrar();
+            }
+
+            private void filtrar() {
+                String searchText = textField.getText();
+                if (searchText.trim().isEmpty()) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchText, columnIndex)); 
+                }
             }
         });
     }
