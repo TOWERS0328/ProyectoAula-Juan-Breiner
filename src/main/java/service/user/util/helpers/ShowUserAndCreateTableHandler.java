@@ -26,7 +26,8 @@ public class ShowUserAndCreateTableHandler implements IShowElementAndCreateTable
 
         model.addColumn("Cédula");   
         model.addColumn("Nombre");   
-        model.addColumn("Apellido"); 
+        model.addColumn("Apellido");
+        model.addColumn("Contraseña");
         model.addColumn("Email");    
         model.addColumn("Carrera");  
         model.addColumn("Puntos");  
@@ -39,13 +40,14 @@ public class ShowUserAndCreateTableHandler implements IShowElementAndCreateTable
                 return;
             } else {
                 for (User user : list) {
-                    Object[] dataList = new Object[6];
+                    Object[] dataList = new Object[7];
                     dataList[0] = user.getIdUser();
                     dataList[1] = user.getName();
                     dataList[2] = user.getLastName();
-                    dataList[3] = user.getEmail();
-                    dataList[4] = user.getCareer();
-                    dataList[5] = user.getPoints();
+                    dataList[3] = user.getPassword();
+                    dataList[4] = user.getEmail();
+                    dataList[5] = user.getCareer();
+                    dataList[6] = user.getPoints();
 
                     model.addRow(dataList);
                 }

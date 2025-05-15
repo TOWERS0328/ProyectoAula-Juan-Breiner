@@ -44,7 +44,6 @@ public class UsersView extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txtJchanging = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -167,13 +166,9 @@ public class UsersView extends javax.swing.JFrame {
         jLabel2.setText("ECOFRIENDLY CODE");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 430, -1, 30));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("CLOSE");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, 30));
-
         btnBack.setBackground(new java.awt.Color(85, 140, 54));
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("CLOSE");
         btnBack.setBorderPainted(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -299,7 +294,6 @@ public class UsersView extends javax.swing.JFrame {
     private javax.swing.JButton btnRedeemPoints;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;

@@ -10,13 +10,12 @@ public class EmailValidationHandler implements IEmailValidation {
 
     @Override
     public boolean isEmailValid(String email) {
-        // Contar el número de arrobas en el email
+        
         int cantidadArrobas = email.length() - email.replace("@", "").length();
         if (cantidadArrobas != 1) {
             return false;
         }
         
-        // Expresión regular para validar el formato del correo
         String regex = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
         return email.matches(regex);
     }

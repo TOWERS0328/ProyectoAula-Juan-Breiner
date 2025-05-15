@@ -82,11 +82,12 @@ public class AdministradorStudent extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         btnInterUpdate = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
-        txtIDM = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         txtEmailM = new javax.swing.JTextField();
         CareerUpdate = new javax.swing.JComboBox<>();
         IDCurrent = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtPasswordU = new javax.swing.JTextField();
         pnDelete = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         btnInterDelete = new javax.swing.JButton();
@@ -459,8 +460,17 @@ public class AdministradorStudent extends javax.swing.JFrame {
         pnChanging.addTab("", pnList);
 
         pnUpdate.setBackground(new java.awt.Color(255, 255, 255));
+        pnUpdate.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setText("Search :");
+        pnUpdate.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, -1, -1));
+
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        pnUpdate.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 180, 20));
 
         tbUpdate.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -494,21 +504,27 @@ public class AdministradorStudent extends javax.swing.JFrame {
         });
         TableUpdate.setViewportView(tbUpdate);
 
+        pnUpdate.add(TableUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 420, 227));
+
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSearchActionPerformed(evt);
             }
         });
+        pnUpdate.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 27, 22));
 
         jLabel15.setText("Name:");
+        pnUpdate.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, 20));
 
         jLabel16.setText("Last Name:");
+        pnUpdate.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
 
         txtNameM.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNameMKeyTyped(evt);
             }
         });
+        pnUpdate.add(txtNameM, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 131, -1));
 
         txtLastNameM.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -518,8 +534,11 @@ public class AdministradorStudent extends javax.swing.JFrame {
                 txtLastNameMKeyTyped(evt);
             }
         });
+        pnUpdate.add(txtLastNameM, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 130, -1));
 
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel17.setText("Career:");
+        pnUpdate.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 50, -1));
 
         btnInterUpdate.setText("UPDATE");
         btnInterUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -527,113 +546,37 @@ public class AdministradorStudent extends javax.swing.JFrame {
                 btnInterUpdateActionPerformed(evt);
             }
         });
+        pnUpdate.add(btnInterUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 144, 36));
 
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel21.setText("ID:");
+        pnUpdate.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 126, 23, 20));
 
-        txtIDM.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtIDMKeyPressed(evt);
-            }
-        });
-
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel23.setText("Email:");
+        pnUpdate.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, 20));
 
         txtEmailM.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtEmailMKeyPressed(evt);
             }
         });
+        pnUpdate.add(txtEmailM, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 130, -1));
 
         CareerUpdate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Tec. en Sistemas", "Tec. en Gestión de Calidad", "Adm. Turística y Hotelera", "Ing. en Sistemas", "Ing. Industrial", "Derecho", "Adm. de Empresas", "Contaduría", "Lic. en Bilingüismo", "Inglés Diario", "Inglés Intensivo", "Inglés Semestral", "Inglés Sábados", "Inglés Niños y Adolescentes", "Prog. de Traducción", "Prog. Aux. Administrativo", "Especializacion" }));
+        CareerUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CareerUpdateActionPerformed(evt);
+            }
+        });
+        pnUpdate.add(CareerUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 160, 20));
 
         IDCurrent.setText("NN");
+        pnUpdate.add(IDCurrent, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 126, 86, 20));
 
-        javax.swing.GroupLayout pnUpdateLayout = new javax.swing.GroupLayout(pnUpdate);
-        pnUpdate.setLayout(pnUpdateLayout);
-        pnUpdateLayout.setHorizontalGroup(
-            pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnUpdateLayout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnUpdateLayout.createSequentialGroup()
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtLastNameM, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58)
-                        .addComponent(btnInterUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnUpdateLayout.createSequentialGroup()
-                        .addGap(0, 2, Short.MAX_VALUE)
-                        .addComponent(TableUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62))
-                    .addGroup(pnUpdateLayout.createSequentialGroup()
-                        .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(pnUpdateLayout.createSequentialGroup()
-                                .addComponent(IDCurrent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel3))
-                            .addGroup(pnUpdateLayout.createSequentialGroup()
-                                .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtNameM)
-                                    .addComponent(txtIDM, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnUpdateLayout.createSequentialGroup()
-                                .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEmailM)
-                                    .addComponent(CareerUpdate, 0, 1, Short.MAX_VALUE)))
-                            .addGroup(pnUpdateLayout.createSequentialGroup()
-                                .addComponent(txtSearch)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSearch)))
-                        .addGap(75, 75, 75))))
-        );
-        pnUpdateLayout.setVerticalGroup(
-            pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnUpdateLayout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
-                .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3)
-                        .addComponent(IDCurrent)))
-                .addGap(18, 18, 18)
-                .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnUpdateLayout.createSequentialGroup()
-                        .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel21)
-                            .addComponent(txtIDM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
-                            .addComponent(txtNameM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel16)
-                            .addComponent(txtLastNameM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnUpdateLayout.createSequentialGroup()
-                        .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtEmailM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel23))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(CareerUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnInterUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TableUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
+        jLabel1.setText("Password:");
+        pnUpdate.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
+        pnUpdate.add(txtPasswordU, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 160, -1));
 
         pnChanging.addTab("", pnUpdate);
 
@@ -772,8 +715,8 @@ public class AdministradorStudent extends javax.swing.JFrame {
     private void btnInterDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInterDeleteActionPerformed
         // TODO add your handling code here:        
         String idUser = txtIDe.getText();
-        new UserController().deleteUser(idUser); // ✅ Llamamos al método correcto
-        new UserController().ShowUserController(tbDelete); // ✅ Actualiza la tabla después de eliminar
+        new UserController().deleteUser(idUser);
+        new UserController().ShowUserController(tbDelete);
         txtIDe.setText("");
         
     }//GEN-LAST:event_btnInterDeleteActionPerformed
@@ -782,13 +725,13 @@ public class AdministradorStudent extends javax.swing.JFrame {
         // TODO add your handling code here:
         String name = txtNameM.getText();
         String lastName = txtLastNameM.getText();
+        String password = txtPasswordU.getText();
         String email = txtEmailM.getText();
-        String idUser = txtIDM.getText();
+        String idUser = IDCurrent.getText();
         String career = CareerUpdate.getSelectedItem().toString();
-        String cedula = IDCurrent.getText();
         UserController userController = new UserController();
 
-        if (!ValidationUtils.validateEmptyFields(name, lastName, email, idUser, cedula)) {
+        if (!ValidationUtils.validateEmptyFields(name, lastName, email, idUser)) {
             JOptionPane.showMessageDialog(null, "Todos los campos deben estar completos");
             return;
         }
@@ -806,27 +749,21 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
         if (!idUser.matches("\\d{8,10}")) {
             JOptionPane.showMessageDialog(null, "El ID del usuario debe tener entre 8 y 10 dígitos");
-            txtIDM.requestFocus();
-            return;
-        }
-        
-        ValidationExistUserById validator = new ValidationExistUserById();
-
-        if (validator.exist(idUser)) {
-            JOptionPane.showMessageDialog(null, "El ID ya esta registrado por otro usuario.");
             return;
         }
 
-        User userToUpdate = userController.findUserById(cedula);
+        User userToUpdate = userController.findUserById(idUser);
 
         if (userToUpdate != null) {
             userToUpdate.setName(name);
             userToUpdate.setLastName(lastName);
+            userToUpdate.setPassword(password);
             userToUpdate.setEmail(email);
             userToUpdate.setIdUser(idUser);
             userToUpdate.setCareer(career);
 
             userController.updateUser(userToUpdate);
+            JOptionPane.showMessageDialog(null, "Modificado correctamente.");
             limpiar();
 
             UserController.ShowUserController(tbUpdate);
@@ -839,11 +776,10 @@ public class AdministradorStudent extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInterUpdateActionPerformed
 
     private void updateM(){
-        User userDto = UserController.SelectUserController(tbUpdate);
-        txtIDM.setText("");
         txtNameM.setText("");
         txtEmailM.setText("");
         txtLastNameM.setText("");
+        txtPasswordU.setText("");
         CareerUpdate.setSelectedItem("");
         IDCurrent.setText("");
     }
@@ -870,27 +806,31 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
     private void btnKeepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeepActionPerformed
         // TODO add your handling code here:        
-    String name = txtName.getText();
-    String lastName = txtLastName.getText();
-    String email = txtEmail.getText();
-    String career = JBoxCarrer.getSelectedItem().toString();
-    String idUser = txtID.getText();
+        String name = txtName.getText();
+        String lastName = txtLastName.getText();
+        String email = txtEmail.getText();
+        String career = JBoxCarrer.getSelectedItem().toString();
+        String idUser = txtID.getText();
     
     // Verificar que se haya seleccionado una carrera
-    ValidationExistUserById validator = new ValidationExistUserById();
+        ValidationExistUserById validator = new ValidationExistUserById();
 
-    if (validator.exist(idUser)) {
-        JOptionPane.showMessageDialog(null, "El ID ya está registrado por otro usuario.");
-        return;
-    }
-    if (career.equals("Select")) {
-        JOptionPane.showMessageDialog(null, "You must select a career");
-    } else {
-        IEmailValidation emailValidator = new EmailValidationHandler();
+        if (validator.exist(idUser)) {
+            JOptionPane.showMessageDialog(null, "El ID ya está registrado por otro usuario.");
+            txtID.requestFocus();
+            return;
+        }
+        if (!ValidationUtils.validateEmptyFields(name, lastName, email, idUser)) {
+            JOptionPane.showMessageDialog(null, "Todos los campos deben estar completos");
+            return;
+        }
+        if (career.equals("Select")) {
+            JOptionPane.showMessageDialog(null, "You must select a career");
+        } else {
+            IEmailValidation emailValidator = new EmailValidationHandler();
         if (emailValidator.isEmailValid(email)) {
-            // Validar que el ID del usuario sea numérico y tenga entre 8 y 10 dígitos
+            
             if (idUser.matches("\\d{8,10}")) {
-                // Crear el objeto User directamente con los datos proporcionados
                 User user = new User();
                 user.setName(name);
                 user.setLastName(lastName);
@@ -899,9 +839,8 @@ public class AdministradorStudent extends javax.swing.JFrame {
                 user.setIdUser(idUser);
                 user.setPassword(idUser);
                 
-                // Llamar al controlador para crear el usuario
                 UserController userController = new UserController();
-                userController.createUser(user); // Asegúrate que el método en el controlador sea 'createUser'
+                userController.createUser(user); 
                 JOptionPane.showMessageDialog(null, "Usuario creado exitosamente");
                 limpiar();
             } else {
@@ -947,10 +886,10 @@ public class AdministradorStudent extends javax.swing.JFrame {
     private void tbUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbUpdateMouseClicked
         // TODO add your handling code here:
         User userDto = UserController.SelectUserController(tbUpdate);
-        txtIDM.setText(userDto.getIdUser());
         txtNameM.setText(userDto.getName());
         txtEmailM.setText(userDto.getEmail());
         txtLastNameM.setText(userDto.getLastName());
+        txtPasswordU.setText(userDto.getPassword());
         CareerUpdate.setSelectedItem(userDto.getCareer());
         IDCurrent.setText(userDto.getIdUser());
     }//GEN-LAST:event_tbUpdateMouseClicked
@@ -1009,12 +948,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtEmailKeyPressed
 
-    private void txtIDMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDMKeyPressed
-       if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            txtNameM.requestFocus();
-        }
-    }//GEN-LAST:event_txtIDMKeyPressed
-
     private void txtLastNameMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLastNameMKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             txtEmailM.requestFocus();
@@ -1026,6 +959,14 @@ public class AdministradorStudent extends javax.swing.JFrame {
             CareerUpdate.requestFocus();
         }
     }//GEN-LAST:event_txtEmailMKeyPressed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void CareerUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CareerUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CareerUpdateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1163,6 +1104,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -1194,12 +1136,12 @@ public class AdministradorStudent extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEmailM;
     private javax.swing.JTextField txtID;
-    private javax.swing.JTextField txtIDM;
     private javax.swing.JTextField txtIDe;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtLastNameM;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtNameM;
+    private javax.swing.JTextField txtPasswordU;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

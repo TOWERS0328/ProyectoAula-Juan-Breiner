@@ -8,6 +8,7 @@ import controller.AwardController;
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import model.Award;
+import service.award.util.validations.ValidationExistAwardByCode;
 
 public class AdministradorAwards extends javax.swing.JFrame {
 
@@ -70,7 +71,6 @@ public class AdministradorAwards extends javax.swing.JFrame {
         txtPointsU = new javax.swing.JTextField();
         btnInterUpdate = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
-        txtCodeU = new javax.swing.JTextField();
         CodeCurrent = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         txtCategoryU = new javax.swing.JTextField();
@@ -525,22 +525,22 @@ public class AdministradorAwards extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49))
             .addGroup(pnUpdateLayout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(pnUpdateLayout.createSequentialGroup()
-                        .addComponent(CodeCurrent, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSearch))
+                .addGap(112, 112, 112)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSearch)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnUpdateLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnUpdateLayout.createSequentialGroup()
                         .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pnUpdateLayout.createSequentialGroup()
                                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtCodeU, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(CodeCurrent, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnUpdateLayout.createSequentialGroup()
                                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -554,38 +554,36 @@ public class AdministradorAwards extends javax.swing.JFrame {
                             .addGroup(pnUpdateLayout.createSequentialGroup()
                                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCategoryU, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(76, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnUpdateLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnInterUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(188, 188, 188))
+                                .addComponent(txtCategoryU, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(pnUpdateLayout.createSequentialGroup()
+                        .addComponent(btnInterUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(110, 110, 110)))
+                .addGap(75, 75, 75))
         );
         pnUpdateLayout.setVerticalGroup(
             pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnUpdateLayout.createSequentialGroup()
-                .addContainerGap(121, Short.MAX_VALUE)
+                .addContainerGap(106, Short.MAX_VALUE)
                 .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3)
-                        .addComponent(CodeCurrent)))
+                        .addComponent(jLabel3)))
                 .addGap(18, 18, 18)
                 .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCodeU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21)
                     .addComponent(jLabel17)
-                    .addComponent(txtCategoryU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCategoryU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CodeCurrent))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAwardU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15)
                     .addComponent(jLabel16)
                     .addComponent(txtPointsU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addGap(13, 13, 13)
                 .addComponent(btnInterUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
         );
@@ -728,8 +726,7 @@ public class AdministradorAwards extends javax.swing.JFrame {
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
         // TODO add your handling code here:
-        txtAward.setText("");
-        txtPoints.setText("");
+        limpiar();
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void btnKeepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeepActionPerformed
@@ -738,6 +735,14 @@ public class AdministradorAwards extends javax.swing.JFrame {
         String name = txtAward.getText().trim();
         String category = txtCategory.getText().trim();
         String pointsText = txtPoints.getText().trim();
+        
+        ValidationExistAwardByCode validator = new ValidationExistAwardByCode();
+
+        if (validator.exist(code)) {
+            JOptionPane.showMessageDialog(null, "El codigo del premio ya esta registrado.");
+            txtCode.requestFocus();
+            return;
+        }
 
         if (code.isEmpty() || name.isEmpty() || category.isEmpty() || pointsText.isEmpty()) {
             JOptionPane.showMessageDialog(null, "All fields must be filled, and points must be greater than 0.");
@@ -749,7 +754,7 @@ public class AdministradorAwards extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Points must be greater than 0.");
                 } else {
                     Award newAward = new Award(code, name, category, points);
-                    AwardController awardController = new AwardController(); // instanciar
+                    AwardController awardController = new AwardController();
                     awardController.createAward(newAward);
                     limpiar();
                 }
@@ -760,16 +765,16 @@ public class AdministradorAwards extends javax.swing.JFrame {
     }//GEN-LAST:event_btnKeepActionPerformed
 
     public void limpiar() {
+        txtCode.setText("");
         txtAward.setText("");
         txtPoints.setText("");
         txtCategory.setText("");
-        txtCode.setText("");
+        
     }
 
     private void tbUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbUpdateMouseClicked
         // TODO add your handling code here:
         Award award = AwardController.selectAwardController(tbUpdate);
-        txtCodeU.setText(award.getCode());
         txtAwardU.setText(award.getName());
         txtCategoryU.setText(award.getCategory());
         txtPointsU.setText(String.valueOf(award.getPoints()));
@@ -816,11 +821,11 @@ public class AdministradorAwards extends javax.swing.JFrame {
 
     private void btnInterUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInterUpdateActionPerformed
         // TODO add your handling code here:
-        String code = txtCodeU.getText().trim();
+        String code = CodeCurrent.getText().trim();
         String name = txtAwardU.getText().trim();
         String category = txtCategoryU.getText().trim();
         String pointsText = txtPointsU.getText().trim();
-
+        
         if (code.isEmpty() || name.isEmpty() || category.isEmpty() || pointsText.isEmpty()) {
             JOptionPane.showMessageDialog(null, "All fields must be filled, and points must be greater than 0.");
             return;
@@ -838,6 +843,9 @@ public class AdministradorAwards extends javax.swing.JFrame {
 
             AwardController awardController = new AwardController();
             awardController.updateAward(updatedAward);
+            
+            JOptionPane.showMessageDialog(null, "Modificado correctamente.");
+            
             AwardController.showAwardController(tbUpdate);
 
             clearUpdate();
@@ -848,7 +856,6 @@ public class AdministradorAwards extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInterUpdateActionPerformed
 
     private void clearUpdate() {
-        txtCodeU.setText("");
         txtAwardU.setText("");
         txtCategoryU.setText("");
         txtPointsU.setText("");
@@ -972,7 +979,6 @@ public class AdministradorAwards extends javax.swing.JFrame {
     private javax.swing.JTextField txtCategoryU;
     private javax.swing.JTextField txtCode;
     private javax.swing.JTextField txtCodeD;
-    private javax.swing.JTextField txtCodeU;
     private javax.swing.JTextField txtPoints;
     private javax.swing.JTextField txtPointsU;
     private javax.swing.JTextField txtSearch;

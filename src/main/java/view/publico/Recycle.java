@@ -89,7 +89,7 @@ public class Recycle extends javax.swing.JFrame {
                 btnBack1ActionPerformed(evt);
             }
         });
-        jPanel4.add(btnBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 67, -1));
+        jPanel4.add(btnBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 70, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(128, 204, 40));
@@ -204,7 +204,7 @@ public class Recycle extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

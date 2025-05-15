@@ -54,7 +54,6 @@ Interface\utils\helpers\ISelectElementTable.class
 view\publico\SignUp.class
 repository\Award\AwardRepository.class
 view\privated\admin\AdministradorResiduo$12.class
-view\publico\ProfileUser$7.class
 util\FileUtils.class
 view\privated\admin\AdministradorStudent$21.class
 view\privated\admin\AdministradorResiduo$7.class
@@ -127,6 +126,7 @@ view\privated\admin\AdministradorResiduo$16.class
 view\publico\Recycle$6.class
 view\privated\admin\AdministradorResiduo$24.class
 view\privated\admin\AdministradorStudent$27.class
+service\residue\util\validations\ValidationExistResidueByCode.class
 view\privated\admin\AdministradorAwards$5.class
 view\publico\ProfileUser$3.class
 view\publico\Recycle$1.class
@@ -138,6 +138,7 @@ Interface\utils\validations\IExistRegister.class
 view\privated\admin\AdministradorStudent$8.class
 view\privated\admin\AdministradorPanel.class
 view\publico\ProfileUser$2.class
+view\privated\admin\AdministradorStudent$28.class
 service\user\util\helpers\SelectUserTableHandler.class
 view\publico\RedemmPoints$5.class
 view\publico\UsersView$1.class
@@ -173,6 +174,7 @@ view\privated\admin\AdministradorPanel$3.class
 view\privated\admin\AdministradorAwards$11.class
 view\privated\admin\AdministradorResiduo$23.class
 view\privated\admin\AdministradorStudent$24.class
+service\award\util\validations\ValidationExistAwardByCode.class
 view\publico\Recycle$5.class
 service\residue\command\CreateResidueHandler.class
 repository\user\UserRepository.class
