@@ -4,6 +4,7 @@
  */
 package view.publico;
 
+import view.user.UsersView;
 import controller.ProfileController;
 import controller.UserController;
 import java.util.List;

@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.util.Date;
+
 /**
  *
  * @author Breiner
@@ -13,14 +15,15 @@ public class RedemptionTicket {
     private String userName;
     private String userId;
     private String awardName;
+    private Date redemptionDate;
 
     public RedemptionTicket(int ticketNumber, String userName, String userId, String awardName) {
         this.ticketNumber = ticketNumber;
         this.userName = userName;
         this.userId = userId;
         this.awardName = awardName;
+        this.redemptionDate = new Date(); 
     }
-
     public int getTicketNumber() {
         return ticketNumber;
     }
@@ -52,6 +55,15 @@ public class RedemptionTicket {
     public void setAwardName(String awardName) {
         this.awardName = awardName;
     }
+
+    public Date getRedemptionDate() {
+        return redemptionDate;
+    }
+
+    public void setRedemptionDate(Date redemptionDate) {
+        this.redemptionDate = redemptionDate;
+    }
+    
     
     
 }
