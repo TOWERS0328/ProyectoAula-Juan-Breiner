@@ -40,6 +40,7 @@ public class AdministradorPanel extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        btnEstudiante3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnClose = new javax.swing.JButton();
@@ -126,6 +127,17 @@ public class AdministradorPanel extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/logo4.png"))); // NOI18N
 
+        btnEstudiante3.setBackground(new java.awt.Color(85, 140, 54));
+        btnEstudiante3.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        btnEstudiante3.setForeground(new java.awt.Color(255, 255, 255));
+        btnEstudiante3.setText("Delivery");
+        btnEstudiante3.setBorder(null);
+        btnEstudiante3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEstudiante3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -144,6 +156,7 @@ public class AdministradorPanel extends javax.swing.JFrame {
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7))
+            .addComponent(btnEstudiante3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,13 +175,15 @@ public class AdministradorPanel extends javax.swing.JFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnObjects, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEstudiante2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEstudiante3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(85, Short.MAX_VALUE))
         );
@@ -240,6 +255,13 @@ public class AdministradorPanel extends javax.swing.JFrame {
    
     }//GEN-LAST:event_btnCloseActionPerformed
 
+    private void btnEstudiante3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstudiante3ActionPerformed
+        this.dispose();
+        RedemmAwards delivery = new RedemmAwards();
+        delivery.setLocationRelativeTo(null);
+        delivery.setVisible(true);
+    }//GEN-LAST:event_btnEstudiante3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -284,6 +306,7 @@ public class AdministradorPanel extends javax.swing.JFrame {
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnEstudiante;
     private javax.swing.JButton btnEstudiante2;
+    private javax.swing.JButton btnEstudiante3;
     private javax.swing.JButton btnObjects;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

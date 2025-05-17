@@ -38,6 +38,7 @@ view\privated\admin\AdministradorAwards$9.class
 view\privated\admin\AdministradorPanel$2.class
 view\publico\ViewInicial.class
 view\privated\admin\AdministradorResiduo$20.class
+repository\ticket\TicketFileHandler$1.class
 service\residue\util\helpers\SelectResidueTableHandler.class
 view\publico\SignUp$3.class
 view\publico\Recycle$2.class
@@ -48,12 +49,14 @@ view\privated\admin\AdministradorResiduo$26.class
 view\privated\admin\AdministradorStudent$17.class
 view\privated\admin\AdministradorResiduo$14.class
 view\privated\admin\AdministradorStudent$7.class
+model\RedemptionTicket.class
 view\publico\UsersView$5.class
 view\privated\admin\AdministradorStudent$16.class
 Interface\utils\helpers\ISelectElementTable.class
 view\publico\SignUp.class
 repository\Award\AwardRepository.class
 view\privated\admin\AdministradorResiduo$12.class
+view\privated\admin\RedemmAwards$3.class
 util\FileUtils.class
 view\privated\admin\AdministradorStudent$21.class
 view\privated\admin\AdministradorResiduo$7.class
@@ -79,12 +82,15 @@ view\privated\admin\AdministradorStudent$14.class
 view\publico\Login$5.class
 view\privated\admin\AdministradorStudent$20.class
 view\publico\UsersView$3.class
+repository\ticket\TicketFileHandler.class
 view\privated\admin\AdministradorAwards$1.class
 view\publico\RedemmPoints.class
 view\privated\admin\AdministradorResiduo$10.class
+repository\ticket\TicketRepository.class
 service\user\command\CreateUserHandler.class
 view\publico\Login$4.class
 view\privated\admin\AdministradorAwards$22.class
+controller\TicketController.class
 view\privated\admin\AdministradorStudent$13.class
 service\user\util\validations\ValidationExistUserById.class
 view\privated\admin\AdministradorResiduo$5.class
@@ -110,6 +116,7 @@ service\user\query\FindUserOnlyByIdHandler.class
 view\privated\admin\AdministradorResiduo$3.class
 view\publico\ViewInicial$2.class
 util\HelperMethods.class
+view\privated\admin\RedemmAwards$2.class
 view\publico\Login$6.class
 view\privated\admin\AdministradorAwards$13.class
 view\privated\admin\AdministradorPanel$4.class
@@ -120,6 +127,7 @@ view\publico\UsersView.class
 Interface\utils\helpers\IShowElementAndCreateTable.class
 view\privated\admin\AdministradorAwards$19.class
 view\publico\SignUp$1.class
+service\ticket\util\helpers\ShowTicketInfoInLabelsHandler.class
 view\privated\admin\AdministradorStudent$15.class
 view\privated\admin\AdministradorStudent$9.class
 view\privated\admin\AdministradorResiduo$16.class
@@ -147,6 +155,8 @@ view\privated\admin\AdministradorResiduo$2.class
 Interface\command\IInsert.class
 view\privated\admin\AdministradorResiduo$9.class
 view\privated\admin\AdministradorAwards$14.class
+view\privated\admin\RedemmAwards$1.class
+service\ticket\util\helpers\ShowTicketAndCreateTableHandler.class
 Interface\query\ISelectAll.class
 view\publico\ProfileUser$1.class
 view\publico\SignUp$2.class
@@ -175,6 +185,7 @@ view\privated\admin\AdministradorAwards$11.class
 view\privated\admin\AdministradorResiduo$23.class
 view\privated\admin\AdministradorStudent$24.class
 service\award\util\validations\ValidationExistAwardByCode.class
+view\privated\admin\AdministradorPanel$6.class
 view\publico\Recycle$5.class
 service\residue\command\CreateResidueHandler.class
 repository\user\UserRepository.class
@@ -182,6 +193,7 @@ repository\residue\ResidueFileHandler.class
 service\user\query\GetAllUsersHandler.class
 view\publico\Login.class
 repository\user\UserFileHandler$1.class
+view\privated\admin\RedemmAwards.class
 service\user\util\helpers\ShowUserAndCreateTableHandler.class
 view\privated\admin\AdministradorResiduo$22.class
 view\privated\admin\AdministradorPanel$5.class
@@ -191,4 +203,5 @@ view\privated\admin\AdministradorResiduo$17.class
 view\privated\admin\AdministradorStudent$25.class
 view\privated\admin\AdministradorStudent$4.class
 view\privated\admin\AdministradorAwards$7.class
+service\ticket\util\helpers\ShowTicketAndCreateTableHandler$1.class
 view\publico\Recycle.class

@@ -6,8 +6,10 @@ package view.publico;
 
 import controller.AwardController;
 import controller.ProfileController;
+import controller.TicketController;
 import javax.swing.JOptionPane;
 import model.Award;
+import model.RedemptionTicket;
 import model.User;
 
 /**
@@ -261,17 +263,19 @@ public class RedemmPoints extends javax.swing.JFrame {
         user.setPoints(remainingPoints);
         ProfileController.updateProfile(user, user.getIdUser());
 
-        JOptionPane.showMessageDialog(null, "Redeem successfully.");
+        RedemptionTicket ticket = TicketController.generateAndEnqueueTicket(
+        user.getIdUser(),
+        user.getName(),
+        txtAward.getText()
+        );
 
-    // Generar código y QR
-        /*String code = RandomCodeRedeem.generateId();
-        ProfileController.GeneratorQRController(user.getIdUser(), code);
-         
-    */
+        JOptionPane.showMessageDialog(null, "Redencion exitosa.\nTu número de ticket es: " + ticket.getTicketNumber()+"Recuerda esperar tu turno y presentar la cedula");
+
         this.dispose();
-        UsersView view = new UsersView(); // Abre la vista de usuario
+        UsersView view = new UsersView();
         view.setLocationRelativeTo(null);
         view.setVisible(true);
+
     }//GEN-LAST:event_RedeemBtnActionPerformed
     
     private boolean validadorSudmit() {
