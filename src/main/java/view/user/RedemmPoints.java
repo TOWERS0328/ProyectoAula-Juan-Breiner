@@ -270,7 +270,7 @@ public class RedemmPoints extends javax.swing.JFrame {
         txtAward.getText()
         );
 
-        JOptionPane.showMessageDialog(null, "Redencion exitosa.\nTu número de ticket es: " + ticket.getTicketNumber()+"Recuerda esperar tu turno y presentar la cedula");
+        JOptionPane.showMessageDialog(null, "Redencion exitosa.\nTu número de ticket es: " + ticket.getTicketNumber()+" Recuerda esperar tu turno y presentar la cedula");
 
         this.dispose();
         UsersView view = new UsersView();
