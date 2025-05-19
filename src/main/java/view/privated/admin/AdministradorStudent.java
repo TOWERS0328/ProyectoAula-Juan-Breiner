@@ -98,6 +98,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        setType(java.awt.Window.Type.UTILITY);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(790, 405));
@@ -109,7 +110,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
         JChanging.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         JChanging.setForeground(new java.awt.Color(255, 255, 255));
         JChanging.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JChanging.setText("REGISTRAR");
+        JChanging.setText("REGISTER");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -179,7 +180,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
         jLabel19.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 24)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("DE ESTUDIANTES");
+        jLabel19.setText("MANAGEMENT");
 
         jLabel20.setFont(new java.awt.Font("Yu Gothic", 1, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
@@ -191,7 +192,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
         jLabel18.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 24)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setText("GESTION");
+        jLabel18.setText("STUDENT");
 
         btnBack.setBackground(new java.awt.Color(45, 106, 79));
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
@@ -224,7 +225,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
                         .addComponent(btnBack)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel19)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -246,7 +247,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
                 .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addGap(23, 23, 23))
         );
@@ -506,6 +507,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
         pnUpdate.add(TableUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 420, 227));
 
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/search.png"))); // NOI18N
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSearchActionPerformed(evt);
@@ -520,6 +522,9 @@ public class AdministradorStudent extends javax.swing.JFrame {
         pnUpdate.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
 
         txtNameM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNameMKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNameMKeyTyped(evt);
             }
@@ -569,6 +574,11 @@ public class AdministradorStudent extends javax.swing.JFrame {
                 CareerUpdateActionPerformed(evt);
             }
         });
+        CareerUpdate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CareerUpdateKeyPressed(evt);
+            }
+        });
         pnUpdate.add(CareerUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 160, 20));
 
         IDCurrent.setText("NN");
@@ -576,6 +586,12 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
         jLabel1.setText("Password:");
         pnUpdate.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
+
+        txtPasswordU.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordUKeyPressed(evt);
+            }
+        });
         pnUpdate.add(txtPasswordU, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 160, -1));
 
         pnChanging.addTab("", pnUpdate);
@@ -715,9 +731,17 @@ public class AdministradorStudent extends javax.swing.JFrame {
     private void btnInterDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInterDeleteActionPerformed
         // TODO add your handling code here:        
         String idUser = txtIDe.getText();
-        new UserController().deleteUser(idUser);
-        new UserController().ShowUserController(tbDelete);
-        txtIDe.setText("");
+        int confirm = JOptionPane.showConfirmDialog(this,
+            "Are you sure you want to delete the user with id: " + idUser + "?",
+            "Confirm Deletion",
+            JOptionPane.YES_NO_OPTION);
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            new UserController().deleteUser(idUser);
+            new UserController().ShowUserController(tbDelete);
+            txtIDe.setText("");
+        }
+        
         
     }//GEN-LAST:event_btnInterDeleteActionPerformed
 
@@ -732,23 +756,23 @@ public class AdministradorStudent extends javax.swing.JFrame {
         UserController userController = new UserController();
 
         if (!ValidationUtils.validateEmptyFields(name, lastName, email, idUser)) {
-            JOptionPane.showMessageDialog(null, "Todos los campos deben estar completos");
+            JOptionPane.showMessageDialog(null, "All fields must be completed");
             return;
         }
 
         if (career.equals("Select")) {
-            JOptionPane.showMessageDialog(null, "Debes seleccionar una carrera");
+            JOptionPane.showMessageDialog(null, "You must select a career");
             return;
         }
         IEmailValidation emailValidator = new EmailValidationHandler();
         if (!emailValidator.isEmailValid(email)) {
-            JOptionPane.showMessageDialog(null, "Correo electronico inválido");
+            JOptionPane.showMessageDialog(null, "Invalid email");
             txtEmailM.requestFocus();
             return;
         }
 
         if (!idUser.matches("\\d{8,10}")) {
-            JOptionPane.showMessageDialog(null, "El ID del usuario debe tener entre 8 y 10 dígitos");
+            JOptionPane.showMessageDialog(null, "The user ID must be between 8 and 10 digits.");
             return;
         }
 
@@ -763,12 +787,12 @@ public class AdministradorStudent extends javax.swing.JFrame {
             userToUpdate.setCareer(career);
 
             userController.updateUser(userToUpdate);
-            JOptionPane.showMessageDialog(null, "Modificado correctamente.");
+            JOptionPane.showMessageDialog(null, "Correctly modified");
             limpiar();
 
             UserController.ShowUserController(tbUpdate);
         } else {
-            JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+            JOptionPane.showMessageDialog(null, "User not found");
         }
 
         updateM();
@@ -812,16 +836,15 @@ public class AdministradorStudent extends javax.swing.JFrame {
         String career = JBoxCarrer.getSelectedItem().toString();
         String idUser = txtID.getText();
     
-    // Verificar que se haya seleccionado una carrera
         ValidationExistUserById validator = new ValidationExistUserById();
 
         if (validator.exist(idUser)) {
-            JOptionPane.showMessageDialog(null, "El ID ya está registrado por otro usuario.");
+            JOptionPane.showMessageDialog(null, "The ID is already registered by another user.");
             txtID.requestFocus();
             return;
         }
         if (!ValidationUtils.validateEmptyFields(name, lastName, email, idUser)) {
-            JOptionPane.showMessageDialog(null, "Todos los campos deben estar completos");
+            JOptionPane.showMessageDialog(null, "All fields must be completed");
             return;
         }
         if (career.equals("Select")) {
@@ -841,7 +864,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
                 
                 UserController userController = new UserController();
                 userController.createUser(user); 
-                JOptionPane.showMessageDialog(null, "Usuario creado exitosamente");
+                JOptionPane.showMessageDialog(null, "User created successfully");
                 limpiar();
             } else {
                 JOptionPane.showMessageDialog(null, "User ID must be between 8 and 10 digits");
@@ -920,8 +943,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNameKeyTyped
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-
-      agregarFiltroTiempoReal(tbUpdate, txtSearch, 1);
+        addRealTimeFilter(tbUpdate, txtSearch, 0);
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void txtIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyPressed
@@ -967,6 +989,24 @@ public class AdministradorStudent extends javax.swing.JFrame {
     private void CareerUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CareerUpdateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CareerUpdateActionPerformed
+
+    private void txtNameMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameMKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtLastNameM.requestFocus();
+        }
+    }//GEN-LAST:event_txtNameMKeyPressed
+
+    private void CareerUpdateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CareerUpdateKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtPasswordU.requestFocus();
+        }
+    }//GEN-LAST:event_CareerUpdateKeyPressed
+
+    private void txtPasswordUKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordUKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            btnInterUpdate.requestFocus();
+        }
+    }//GEN-LAST:event_txtPasswordUKeyPressed
 
     /**
      * @param args the command line arguments
@@ -1048,7 +1088,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
         });
     }
     
-    public void agregarFiltroTiempoReal(JTable table, JTextField textField, int columnIndex) {
+    public void addRealTimeFilter(JTable table, JTextField textField, int columnIndex) {
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
         table.setRowSorter(rowSorter);
 

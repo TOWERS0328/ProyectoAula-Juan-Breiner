@@ -19,6 +19,5 @@ public class UpdateAwardHandler implements IUpdate<Award, Void> {
     @Override
     public void Update(Award award, Void unused) {
         awardRepository.updateAward(award);
-        System.out.println("Premio actualizado exitosamente.");
     }
 }

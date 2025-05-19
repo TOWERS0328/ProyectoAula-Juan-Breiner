@@ -27,17 +27,17 @@ public class ShowAwardAndCreateTableHandler implements IShowElementAndCreateTabl
         TableRowSorter<TableModel> alphabeticOrder = new TableRowSorter<>(model);
         table.setRowSorter(alphabeticOrder);
 
-        model.addColumn("Código");
-        model.addColumn("Nombre");
-        model.addColumn("Categoría");
-        model.addColumn("Puntos");
+        model.addColumn("Code");
+        model.addColumn("Name");
+        model.addColumn("category");
+        model.addColumn("Points");
         table.setModel(model);
 
         String[] dataList = new String[4];
 
         try {
             if (list.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "No hay premios disponibles para mostrar.");
+                JOptionPane.showMessageDialog(null, "There are no prizes available to display");
                 return;
             } else {
                 for (Award award : list) {

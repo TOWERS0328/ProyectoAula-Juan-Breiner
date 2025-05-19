@@ -24,25 +24,11 @@ public class RedemptionHistory extends javax.swing.JFrame {
      */
     public RedemptionHistory() {
         initComponents();
-        loadImage();
         User profile = ProfileController.getProfile();
         String userId = profile.getIdUser();
 
-        // Mostrar historial en la tabla
         TicketController.showUserHistoryInTable(userId, tbTickets);
-
-        // Mostrar ticket más reciente en los labels
         TicketController.showUserFirstTicketInLabels(userId, lblTicketNumber, lblUserName, lblUserId, lblAwardName, lblDate);
-}
-    
-    private void loadImage() {
-    URL imgUrl = getClass().getResource("/view/images/redeem2.png");
-
-    if (imgUrl != null) {
-        jLabel1.setIcon(new ImageIcon(imgUrl));
-    } else {
-        System.err.println("❌ Imagen no encontrada en: /view/images/redeem2.png");
-    }
 }
 
     /**
@@ -78,6 +64,7 @@ public class RedemptionHistory extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setType(java.awt.Window.Type.UTILITY);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -159,7 +146,7 @@ public class RedemptionHistory extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 153, 51));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("NOMBRE :");
+        jLabel4.setText("NAME :");
 
         lblUserName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblUserName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -172,7 +159,7 @@ public class RedemptionHistory extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 153, 51));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel12.setText("PREMIO :");
+        jLabel12.setText("PRIZE :");
         jLabel12.setAutoscrolls(true);
 
         lblAwardName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -204,7 +191,7 @@ public class RedemptionHistory extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 153, 51));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel13.setText("FECHA :");
+        jLabel13.setText("DATE :");
         jLabel13.setAutoscrolls(true);
 
         lblDate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

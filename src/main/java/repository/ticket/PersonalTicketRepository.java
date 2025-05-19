@@ -16,14 +16,12 @@ public class PersonalTicketRepository {
         this.fileHandler = new PersonalTicketFileHandler();
     }
 
-    // Añadir (PUSH) un ticket al historial
     public void pushTicket(String userId, RedemptionTicket ticket) {
         List<RedemptionTicket> tickets = fileHandler.readFromFile(userId);
-        tickets.add(ticket); // al final como pila
+        tickets.add(ticket);
         fileHandler.saveToFile(userId, tickets);
     }
 
-    // Eliminar el último ticket (POP)
     public RedemptionTicket popTicket(String userId) {
         List<RedemptionTicket> tickets = fileHandler.readFromFile(userId);
         if (tickets.isEmpty()) return null;
@@ -33,19 +31,10 @@ public class PersonalTicketRepository {
         return last;
     }
 
-    // Ver historial completo (sin eliminar)
     public List<RedemptionTicket> getUserTickets(String userId) {
         return fileHandler.readFromFile(userId);
     }
 
-    // Ver último ticket sin eliminar
-    public RedemptionTicket peekTicket(String userId) {
-        List<RedemptionTicket> tickets = fileHandler.readFromFile(userId);
-        if (tickets.isEmpty()) return null;
-        return tickets.get(tickets.size() - 1);
-    }
-
-    // Vaciar historial
     public void clearTickets(String userId) {
         fileHandler.saveToFile(userId, new ArrayList<>());
     }

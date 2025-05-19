@@ -7,6 +7,7 @@ package view.publico;
 import view.user.UsersView;
 import controller.ProfileController;
 import controller.UserController;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.User;
@@ -42,7 +43,7 @@ public class Login extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnSignUp = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -52,6 +53,7 @@ public class Login extends javax.swing.JFrame {
         txtPass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setType(java.awt.Window.Type.UTILITY);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -83,13 +85,13 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(85, 140, 54));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Sign Up");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnSignUp.setBackground(new java.awt.Color(85, 140, 54));
+        btnSignUp.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnSignUp.setForeground(new java.awt.Color(255, 255, 255));
+        btnSignUp.setText("Sign Up");
+        btnSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnSignUpActionPerformed(evt);
             }
         });
 
@@ -115,6 +117,11 @@ public class Login extends javax.swing.JFrame {
                 txtIdActionPerformed(evt);
             }
         });
+        txtId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtIdKeyPressed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel4.setText("Password:");
@@ -125,6 +132,11 @@ public class Login extends javax.swing.JFrame {
         txtPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPassActionPerformed(evt);
+            }
+        });
+        txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPassKeyPressed(evt);
             }
         });
 
@@ -148,7 +160,7 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(jLabel4)
                             .addComponent(txtId, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSignUp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                             .addComponent(jLabel3)
                             .addComponent(txtPass))
@@ -177,7 +189,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addGap(6, 6, 6)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57))
         );
 
@@ -215,7 +227,7 @@ public class Login extends javax.swing.JFrame {
         String password = txtPass.getText().trim();
         
         if (idUser.isEmpty() || password.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "❌ Todos los campos son obligatorios");
+        JOptionPane.showMessageDialog(this, "All fields are required");
         return;
     }
 
@@ -225,14 +237,14 @@ public class Login extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
         // TODO add your handling code here:
         this.dispose();
         SignUp vista = new SignUp();
         vista.setLocationRelativeTo(null);
         vista.setVisible(true);
 
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnSignUpActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
@@ -250,12 +262,24 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPassActionPerformed
 
+    private void txtIdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtPass.requestFocus();
+        }
+    }//GEN-LAST:event_txtIdKeyPressed
+
+    private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            btnLogin.requestFocus();
+        }
+    }//GEN-LAST:event_txtPassKeyPressed
+
     /**
      * @param args the command line arguments
      */
     private void redirection(String response) {
     if (response.equals("NN")) {
-        JOptionPane.showMessageDialog(null, "❌ Usuario o contraseña incorrectos");
+        JOptionPane.showMessageDialog(null, "❌ Incorrect username or password");
     } else if (response.equalsIgnoreCase("admin")) {
         this.dispose();
         AdministradorPanel adminPanel = new AdministradorPanel();
@@ -304,7 +328,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnLogin;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnSignUp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

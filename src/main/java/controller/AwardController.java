@@ -59,4 +59,12 @@ public class AwardController {
         award.setCode(awardCode);
         deleteAwardHandler.Delete(award);
     }
+    
+    public List<Award> getAllAwards() {
+    return getAllAwardsHandler.getAll();
+    }
+
+    public Award findAwardByCode(String awardCode) {
+    return getAwardByCodeHandler.findById(awardCode);
+    }
 }

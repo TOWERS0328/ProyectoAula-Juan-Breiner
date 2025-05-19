@@ -15,6 +15,5 @@ public class CreateResidueHandler implements IInsert<Residue> {
     @Override
     public void insert(Residue residue) {
         residueRepository.saveResidue(residue);
-        System.out.println("Residuo creado exitosamente.");
     }
 }

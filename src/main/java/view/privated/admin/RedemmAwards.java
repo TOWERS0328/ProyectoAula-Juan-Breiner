@@ -57,6 +57,7 @@ public class RedemmAwards extends javax.swing.JFrame {
         lblTicketNumber = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setType(java.awt.Window.Type.UTILITY);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -143,15 +144,15 @@ public class RedemmAwards extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/img-modi.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Lista De Personas En La cola De Entrega.");
+        jLabel2.setText("List of People in the Delivery Queue.");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("ID");
+        jLabel3.setText("ID :");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("NOMBRE");
+        jLabel4.setText("NAME :");
 
         lblUserName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblUserName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -170,7 +171,7 @@ public class RedemmAwards extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("PREMIO");
+        jLabel12.setText("PRIZE :");
         jLabel12.setAutoscrolls(true);
 
         lblAwardName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -179,7 +180,7 @@ public class RedemmAwards extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("N° ");
+        jLabel14.setText("N° :");
 
         lblTicketNumber.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTicketNumber.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -279,20 +280,18 @@ public class RedemmAwards extends javax.swing.JFrame {
         if (attended != null) {
             JOptionPane.showMessageDialog(null,
                 "Ticket atendido:\n" +
-                "Número: " + attended.getTicketNumber() + "\n" +
-                "Usuario: " + attended.getUserName() + "\n" +
+                "Number: " + attended.getTicketNumber() + "\n" +
+                "User: " + attended.getUserName() + "\n" +
                 "ID: " + attended.getUserId() + "\n" +
-                "Premio: " + attended.getAwardName()
+                "Prizes: " + attended.getAwardName()
             );
         } else {
-            JOptionPane.showMessageDialog(null, "No hay tickets en la cola.");
+            JOptionPane.showMessageDialog(null, "There are no tickets in the queue");
             return;
         }
 
-        // 2. Actualizar la tabla con la nueva cola
         TicketController.showTicketsInTable(tbTickets);
 
-        // 3. Actualizar los labels con el siguiente ticket en la cola
         TicketController.showFirstTicketInLabels(tbTickets, lblTicketNumber, lblUserName, lblUserId, lblAwardName);
     
     }//GEN-LAST:event_btnAttendentActionPerformed

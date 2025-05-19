@@ -9,6 +9,11 @@ import controller.AwardController;
 import controller.ProfileController;
 import controller.TicketController;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import model.Award;
 import model.RedemptionTicket;
 import model.User;
@@ -69,6 +74,7 @@ public class RedemmPoints extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setType(java.awt.Window.Type.UTILITY);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -147,6 +153,13 @@ public class RedemmPoints extends javax.swing.JFrame {
         jLabel1.setText("Look for your prize :");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 138, 261, -1));
         jPanel2.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 170, 261, -1));
+
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/search.png"))); // NOI18N
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 170, 30, 22));
 
         tbAward.setModel(new javax.swing.table.DefaultTableModel(
@@ -270,7 +283,7 @@ public class RedemmPoints extends javax.swing.JFrame {
         txtAward.getText()
         );
 
-        JOptionPane.showMessageDialog(null, "Redencion exitosa.\nTu número de ticket es: " + ticket.getTicketNumber()+" Recuerda esperar tu turno y presentar la cedula");
+        JOptionPane.showMessageDialog(null, "Successful redemption.\nYour ticket number is: " + ticket.getTicketNumber()+" Please remember to wait for your turn and present your ID.");
 
         this.dispose();
         UsersView view = new UsersView();
@@ -278,10 +291,14 @@ public class RedemmPoints extends javax.swing.JFrame {
         view.setVisible(true);
 
     }//GEN-LAST:event_RedeemBtnActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+       addFilter(tbAward, txtSearch, 2);
+    }//GEN-LAST:event_btnSearchActionPerformed
     
     private boolean validadorSudmit() {
         if (txtPointsYouNeeded.getText().isEmpty() || txtAward.getText().isEmpty() || txtYourPoints.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Por favor llene todos los campos");
+            JOptionPane.showMessageDialog(null, "Please fill in all fields");
             return false;
         }
         int points = Integer.parseInt(txtPointsYouNeeded.getText());
@@ -327,6 +344,38 @@ public class RedemmPoints extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void addFilter(JTable table, JTextField textField, int columnIndex) {
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
+        table.setRowSorter(rowSorter);
+
+        textField.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            @Override
+            public void insertUpdate(javax.swing.event.DocumentEvent e) {
+                filtrar();
+            }
+
+            @Override
+            public void removeUpdate(javax.swing.event.DocumentEvent e) {
+                filtrar();
+            }
+
+            @Override
+            public void changedUpdate(javax.swing.event.DocumentEvent e) {
+                filtrar();
+            }
+
+            private void filtrar() {
+                String searchText = textField.getText();
+                if (searchText.trim().isEmpty()) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchText, columnIndex)); 
+                }
+            }
+        });
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton RedeemBtn;

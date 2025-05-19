@@ -19,6 +19,5 @@ public class DeleteAwardHandler implements IDelete<Award> {
     @Override
     public void Delete(Award award) {
         awardRepository.deleteAward(award.getCode());
-        System.out.println("Premio eliminado exitosamente.");
     }
 }

@@ -19,6 +19,5 @@ public class DeleteResidueHandler implements IDelete<Residue> {
     @Override
     public void Delete(Residue residue) {
         residueRepository.deleteResidue(residue.getCode());
-        System.out.println("Residuo eliminado exitosamente.");
     }
 }

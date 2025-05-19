@@ -7,6 +7,8 @@ package view.privated.admin;
 import controller.AwardController;
 import javax.swing.*;
 import java.awt.event.KeyEvent;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import model.Award;
 import service.award.util.validations.ValidationExistAwardByCode;
 
@@ -83,6 +85,7 @@ public class AdministradorAwards extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        setType(java.awt.Window.Type.UTILITY);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(790, 405));
@@ -300,6 +303,9 @@ public class AdministradorAwards extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCodeKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodeKeyTyped(evt);
+            }
         });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/ecology (2).png"))); // NOI18N
@@ -312,6 +318,9 @@ public class AdministradorAwards extends javax.swing.JFrame {
         txtCategory.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCategoryKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCategoryKeyTyped(evt);
             }
         });
 
@@ -327,7 +336,6 @@ public class AdministradorAwards extends javax.swing.JFrame {
                         .addGap(128, 128, 128))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnRegisterLayout.createSequentialGroup()
                         .addGroup(pnRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(pnRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -336,7 +344,8 @@ public class AdministradorAwards extends javax.swing.JFrame {
                                 .addGroup(pnRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(txtAward, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtCode, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(txtPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 3, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnRegisterLayout.createSequentialGroup()
                         .addComponent(btnKeep, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -475,23 +484,30 @@ public class AdministradorAwards extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tbUpdate);
 
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/search.png"))); // NOI18N
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSearchActionPerformed(evt);
             }
         });
 
-        jLabel15.setText("Premio:");
+        jLabel15.setText("Prize:");
 
         jLabel16.setText("Puntos:");
 
         txtAwardU.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtAwardUKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtAwardUKeyTyped(evt);
             }
         });
 
         txtPointsU.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPointsUKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPointsUKeyTyped(evt);
             }
@@ -511,6 +527,9 @@ public class AdministradorAwards extends javax.swing.JFrame {
         jLabel17.setText("Categoria:");
 
         txtCategoryU.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCategoryUKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCategoryUKeyTyped(evt);
             }
@@ -528,24 +547,25 @@ public class AdministradorAwards extends javax.swing.JFrame {
                 .addGap(112, 112, 112)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSearch)
+                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnUpdateLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(91, Short.MAX_VALUE)
                 .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnUpdateLayout.createSequentialGroup()
                         .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pnUpdateLayout.createSequentialGroup()
                                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(CodeCurrent, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(CodeCurrent, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(52, 52, 52))
                             .addGroup(pnUpdateLayout.createSequentialGroup()
-                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtAwardU, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(52, 52, 52)
+                                .addComponent(txtAwardU, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)))
                         .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pnUpdateLayout.createSequentialGroup()
                                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -712,13 +732,14 @@ public class AdministradorAwards extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void txtAwardUKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAwardUKeyTyped
-    if (!Character.isLetter(evt.getKeyChar())) {
+        char c = evt.getKeyChar();
+        if (!Character.isLetter(c) && !Character.isWhitespace(c) && !Character.isISOControl(c)) {
             evt.consume();
         }
     }//GEN-LAST:event_txtAwardUKeyTyped
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-       
+        addRealTimeFilter(tbUpdate, txtSearch, 1);
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void txtSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyTyped
@@ -739,7 +760,7 @@ public class AdministradorAwards extends javax.swing.JFrame {
         ValidationExistAwardByCode validator = new ValidationExistAwardByCode();
 
         if (validator.exist(code)) {
-            JOptionPane.showMessageDialog(null, "El codigo del premio ya esta registrado.");
+            JOptionPane.showMessageDialog(null, "The prize code has already been registered.");
             txtCode.requestFocus();
             return;
         }
@@ -756,6 +777,7 @@ public class AdministradorAwards extends javax.swing.JFrame {
                     Award newAward = new Award(code, name, category, points);
                     AwardController awardController = new AwardController();
                     awardController.createAward(newAward);
+                    JOptionPane.showMessageDialog(null, "Award created successfully");
                     limpiar();
                 }
             } catch (NumberFormatException e) {
@@ -871,7 +893,7 @@ public class AdministradorAwards extends javax.swing.JFrame {
 
     private void txtAwardKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAwardKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            txtPoints.requestFocus();
+            txtCategory.requestFocus();
         }
     }//GEN-LAST:event_txtAwardKeyPressed
 
@@ -882,7 +904,8 @@ public class AdministradorAwards extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPointsKeyPressed
 
     private void txtAwardKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAwardKeyTyped
-        if (!Character.isLetter(evt.getKeyChar())) {
+        char c = evt.getKeyChar();
+        if (!Character.isLetter(c) && !Character.isWhitespace(c) && !Character.isISOControl(c)) {
             evt.consume();
         }
     }//GEN-LAST:event_txtAwardKeyTyped
@@ -906,12 +929,47 @@ public class AdministradorAwards extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPointsUKeyTyped
 
     private void txtCategoryKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCategoryKeyPressed
-        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtPoints.requestFocus();
+        }
     }//GEN-LAST:event_txtCategoryKeyPressed
 
     private void txtCategoryUKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCategoryUKeyTyped
-        // TODO add your handling code here:
+        if (!Character.isLetter(evt.getKeyChar())) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtCategoryUKeyTyped
+
+    private void txtCategoryKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCategoryKeyTyped
+        if (!Character.isLetter(evt.getKeyChar())) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCategoryKeyTyped
+
+    private void txtAwardUKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAwardUKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtCategoryU.requestFocus();
+        }
+    }//GEN-LAST:event_txtAwardUKeyPressed
+
+    private void txtCategoryUKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCategoryUKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtPointsU.requestFocus();
+        }
+    }//GEN-LAST:event_txtCategoryUKeyPressed
+
+    private void txtPointsUKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPointsUKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            btnInterUpdate.requestFocus();
+        }
+    }//GEN-LAST:event_txtPointsUKeyPressed
+
+    private void txtCodeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodeKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isLetterOrDigit(c) && !Character.isISOControl(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCodeKeyTyped
 
     /**
      * @param args the command line arguments
@@ -923,6 +981,38 @@ public class AdministradorAwards extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AdministradorAwards().setVisible(true);
+            }
+        });
+    }
+    
+    public void addRealTimeFilter(JTable table, JTextField textField, int columnIndex) {
+        
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
+        table.setRowSorter(rowSorter);
+
+        textField.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            @Override
+            public void insertUpdate(javax.swing.event.DocumentEvent e) {
+                filtrar();
+            }
+
+            @Override
+            public void removeUpdate(javax.swing.event.DocumentEvent e) {
+                filtrar();
+            }
+
+            @Override
+            public void changedUpdate(javax.swing.event.DocumentEvent e) {
+                filtrar();
+            }
+
+            private void filtrar() {
+                String searchText = textField.getText();
+                if (searchText.trim().isEmpty()) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchText, columnIndex)); 
+                }
             }
         });
     }

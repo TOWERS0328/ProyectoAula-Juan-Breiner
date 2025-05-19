@@ -21,7 +21,7 @@ public class ValidationExistResidueByCode implements IExistRegister<String> {
         List<Residue> residues = fileHandler.readFromFile();
 
         for (Residue residue : residues) {
-            if (residue.getCode().equals(codeResidue)) {
+            if (residue.getCode().equalsIgnoreCase(codeResidue)) {
                 return true;
             }
         }

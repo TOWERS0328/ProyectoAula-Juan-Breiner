@@ -22,10 +22,7 @@ public class UserFileHandler {
         }
     }
 
-
-   
-
-     public List<User> readFromFile() {
+    public List<User> readFromFile() {
 
     try (Reader reader = new FileReader(FILE_NAME)) {
         Type userListType = new TypeToken<ArrayList<User>>() {}.getType();

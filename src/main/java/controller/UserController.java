@@ -47,7 +47,7 @@ public class UserController {
         }
     }
 
-    return "NN"; // No encontrado
+    return "NN"; // No lo encontro
 }
     
     public static void ShowUserController(JTable table) {
@@ -70,9 +70,9 @@ public class UserController {
 }
 
     public void deleteUser(String userId) {
-        User user = new User();  // Creamos un usuario con el ID a eliminar
-        user.setIdUser(userId);  // Establecemos el ID del usuario a eliminar
-        deleteUserHandler.Delete(user);  // Ejecutamos el comando de eliminación
+        User user = new User();
+        user.setIdUser(userId);
+        deleteUserHandler.Delete(user);
     }
 
     public List<User> getAllUsers() {

@@ -4,10 +4,24 @@
  */
 package service.residue.query;
 
+import Interface.query.IFindById;
+import model.Residue;
+import repository.residue.ResidueRepository;
+
 /**
  *
  * @author Breiner
  */
-public class FindResidueByCodeHandler {
-    
-}
+public class FindResidueByCodeHandler implements IFindById<String,Residue> {
+    private final ResidueRepository repository;
+
+    public FindResidueByCodeHandler() {
+        this.repository = new ResidueRepository();
+    }
+
+    @Override
+    public Residue findById(String code) {
+        return repository.findResidueByCode(code);
+    }
+
+    }

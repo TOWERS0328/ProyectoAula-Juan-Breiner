@@ -24,13 +24,13 @@ public class ShowUserAndCreateTableHandler implements IShowElementAndCreateTable
         TableRowSorter<TableModel> alphabeticOrder = new TableRowSorter<>(model);
         table.setRowSorter(alphabeticOrder);
 
-        model.addColumn("Cédula");   
-        model.addColumn("Nombre");   
-        model.addColumn("Apellido");
-        model.addColumn("Contraseña");
+        model.addColumn("ID");   
+        model.addColumn("Name");   
+        model.addColumn("Last name");
+        model.addColumn("Password");
         model.addColumn("Email");    
-        model.addColumn("Carrera");  
-        model.addColumn("Puntos");  
+        model.addColumn("Carrer");  
+        model.addColumn("Points");  
 
         table.setModel(model);
 

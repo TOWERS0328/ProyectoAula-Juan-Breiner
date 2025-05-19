@@ -21,7 +21,7 @@ public class ValidationExistAwardByCode implements IExistRegister<String> {
         List<Award> awards = fileHandler.readFromFile();
 
         for (Award award : awards) {
-            if (award.getCode().equals(codeAward)) {
+            if (award.getCode().equalsIgnoreCase(codeAward)) {
                 return true;
             }
         }

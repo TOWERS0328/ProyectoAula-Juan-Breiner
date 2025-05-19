@@ -53,6 +53,7 @@ public class UsersView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setType(java.awt.Window.Type.UTILITY);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -236,20 +237,19 @@ public class UsersView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void btnRecycleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecycleActionPerformed
-             this.dispose(); // Cierra la ventana actual
-
-    // Abre la ventana Recycle
-    Recycle recycle = new Recycle();
-    recycle.setLocationRelativeTo(null);
-    recycle.setVisible(true);
+    
+        this.dispose();
+        Recycle recycle = new Recycle();
+        recycle.setLocationRelativeTo(null);
+        recycle.setVisible(true);
     }//GEN-LAST:event_btnRecycleActionPerformed
 
     private void btnRedeemPointsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedeemPointsActionPerformed
 
         this.dispose(); 
-        RedemmPoints redeem = new RedemmPoints();  // Pasamos el objeto `User` al constructor
-        redeem.setLocationRelativeTo(null);  // Centra la ventana
-        redeem.setVisible(true);  // Muestra la nueva ventana
+        RedemmPoints redeem = new RedemmPoints();
+        redeem.setLocationRelativeTo(null);
+        redeem.setVisible(true);
     }//GEN-LAST:event_btnRedeemPointsActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

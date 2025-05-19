@@ -7,8 +7,8 @@ C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\service\award\query\FindAwardByCodeHandler.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\service\user\command\DeleteUserHandler.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\model\Award.java
-C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\Interface\query\ILogin.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\service\ticket\util\helpers\ShowUserHistoryAndCreateTableHandler.java
+C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\view\privated\admin\AdministradorRecycling.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\service\award\command\DeleteAwardHandler.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\service\user\util\validations\EmailValidationHandler.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\Interface\command\IDelete.java
@@ -18,7 +18,6 @@ C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\util\LoginRequest.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\Interface\utils\helpers\ISelectElementTable.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\service\award\command\CreateAwardHandler.java
-C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\Interface\query\ISelectAll.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\service\user\query\GetAllUsersHandler.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\view\privated\admin\AdministradorStudent.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\model\RedemptionTicket.java
@@ -38,19 +37,14 @@ C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\repository\ticket\TicketFileHandler.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\repository\ticket\PersonalTicketRepository.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\service\award\util\helpers\SelectAwardTableHandler.java
-C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\Interface\utils\helpers\ICalculatePoints.java
-C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\util\FileUtils.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\view\user\Recycle.java
-C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\Interface\utils\helpers\ISanitizations.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\service\award\query\GetAllAwardHandler.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\view\privated\admin\AdministradorPanel.java
+C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\Interface\query\IGetAll.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\service\residue\command\DeleteResidueHandler.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\service\residue\command\UpdateResidueHandler.java
-C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\Interface\command\IInsertPoints.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\Interface\utils\helpers\IShowElementAndCreateTable.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\model\Residue.java
-C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\util\ValidationUtils.java
-C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\util\HelperMethods.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\view\user\RedemmPoints.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\service\residue\util\helpers\SelectResidueTableHandler.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\Interface\utils\validations\IExistRegister.java
@@ -67,7 +61,6 @@ C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\repository\ticket\PersonalTicketFileHandler.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\service\award\command\UpdateAwardHandler.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\service\ticket\util\helpers\ShowTicketInfoInLabelsHandler.java
-C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\view\privated\admin\AdministradorResiduo.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\model\User.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\service\residue\util\helpers\ShowResidueAndCreateTableHandler.java
 C:\Users\Breiner\OneDrive\Escritorio\DT-Estructura\ProyectoAula-Juan-Breiner\src\main\java\Interface\query\IFindById.java

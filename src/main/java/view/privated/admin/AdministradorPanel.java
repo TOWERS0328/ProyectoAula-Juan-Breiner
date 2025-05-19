@@ -47,6 +47,7 @@ public class AdministradorPanel extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        setType(java.awt.Window.Type.UTILITY);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -234,7 +235,7 @@ public class AdministradorPanel extends javax.swing.JFrame {
     private void btnObjectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObjectsActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        AdministradorResiduo object = new AdministradorResiduo();
+        AdministradorRecycling object = new AdministradorRecycling();
         object.setLocationRelativeTo(null);
         object.setVisible(true);
     }//GEN-LAST:event_btnObjectsActionPerformed

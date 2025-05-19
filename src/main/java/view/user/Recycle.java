@@ -70,6 +70,7 @@ public class Recycle extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setType(java.awt.Window.Type.UTILITY);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -118,6 +119,7 @@ public class Recycle extends javax.swing.JFrame {
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 158, -1, 20));
         jPanel3.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 185, 260, -1));
 
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/search.png"))); // NOI18N
         btnSearch.setPreferredSize(new java.awt.Dimension(33, 5));
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -274,7 +276,7 @@ public class Recycle extends javax.swing.JFrame {
 
     private boolean validador() {
         if (txtYourPoints.getText().equals("") || txtRecyclePoints.getText().equals("") || txtWeight.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Ingrese un valor valido");
+            JOptionPane.showMessageDialog(null, "Please enter a valid value");
             return false;
         }
         return true;

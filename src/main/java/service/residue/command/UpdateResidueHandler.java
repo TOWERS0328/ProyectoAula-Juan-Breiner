@@ -19,6 +19,5 @@ public class UpdateResidueHandler implements IUpdate<Residue, Void> {
     @Override
     public void Update(Residue residue, Void unused) {
         residueRepository.updateResidue(residue);
-        System.out.println("Residuo actualizado exitosamente.");
     }
 }

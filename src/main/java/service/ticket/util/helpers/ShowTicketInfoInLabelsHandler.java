@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 public class ShowTicketInfoInLabelsHandler {
     public static void showFirstTicketInLabels(JTable table, JLabel lblTicketNumber, JLabel lblUserName, JLabel lblUserId, JLabel lblAwardName) {
         if (table.getRowCount() == 0) {
-            lblTicketNumber.setText("Sin tickets");
+            lblTicketNumber.setText("No tickets");
             lblUserName.setText("-");
             lblUserId.setText("-");
             lblAwardName.setText("-");

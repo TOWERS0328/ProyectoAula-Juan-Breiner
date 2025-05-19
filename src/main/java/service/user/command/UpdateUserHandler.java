@@ -15,6 +15,5 @@ public class UpdateUserHandler implements IUpdate<User, Void> {
     @Override
     public void Update(User user, Void unused) {
         userRepository.updateUser(user);
-        System.out.println("Usuario actualizado exitosamente.");
     }
     }

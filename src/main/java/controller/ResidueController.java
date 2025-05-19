@@ -32,7 +32,6 @@ public class ResidueController {
         this.getResidueByCodeHandler = new FindResidueByCodeHandler();
     }
 
-    // Mostrar todos los residuos en la tabla
     public static void showResidueController(JTable table) {
         ResidueFileHandler fileHandler = new ResidueFileHandler();
         List<Residue> residues = fileHandler.readFromFile();
@@ -40,13 +39,11 @@ public class ResidueController {
         showResidueTableHandler.showTable(table, residues);
     }
 
-    // Seleccionar un residuo de la tabla
     public static Residue selectResidueController(JTable table) {
     SelectResidueTableHandler selectResidueTableHandler = new SelectResidueTableHandler();
     return selectResidueTableHandler.selectElement(table);
 }
 
-    // Crear un residuo
     public void createResidue(Residue residue) {
         createResidueHandler.insert(residue);
     }
@@ -61,12 +58,12 @@ public class ResidueController {
         deleteResidueHandler.Delete(residue);
     }
 
-    /*public List<Residue> getAllResidues() {
-        return getAllResiduesHandler.execute();
+    public List<Residue> getAllResidues() {
+        return getAllResiduesHandler.getAll();
     }
 
     // Buscar un residuo por código
     public Residue findResidueByCode(String residueCode) {
-        return getResidueByCodeHandler.execute(residueCode);
-    }*/
+        return getResidueByCodeHandler.findById(residueCode);
+    }
 }

@@ -15,6 +15,5 @@ public class CreateUserHandler implements IInsert<User> {
     @Override
     public void insert(User user) {
         userRepository.saveUser(user);
-        System.out.println("Usuario creado exitosamente.");
     }
 }

@@ -21,23 +21,20 @@ public class ShowResidueAndCreateTableHandler implements IShowElementAndCreateTa
             }
         };
         
-        // Sorting rows alphabetically
         TableRowSorter<TableModel> alphabeticOrder = new TableRowSorter<TableModel>(model);
         table.setRowSorter(alphabeticOrder);
         
-        // Defining columns for the table
-        model.addColumn("Código");
-        model.addColumn("Tipo");
-        model.addColumn("Objeto");
-        model.addColumn("Puntos");
+        model.addColumn("Code");
+        model.addColumn("Type");
+        model.addColumn("Objet");
+        model.addColumn("Points");
         table.setModel(model);
 
-        // Store data
         String[] dataList = new String[4];
 
         try {
             if (list.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "No residues available to display.");
+                JOptionPane.showMessageDialog(null, "No residues available to display");
                 return;
             } else {
                 for (Residue residue : list) {

@@ -6,6 +6,7 @@ package view.publico;
 
 import Interface.utils.validations.IEmailValidation;
 import controller.UserController;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.User;
@@ -56,6 +57,7 @@ public class SignUp extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 510));
+        setType(java.awt.Window.Type.UTILITY);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
 
@@ -92,6 +94,11 @@ public class SignUp extends javax.swing.JFrame {
                 txtEmailActionPerformed(evt);
             }
         });
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEmailKeyPressed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         jLabel4.setText("Name:");
@@ -99,6 +106,9 @@ public class SignUp extends javax.swing.JFrame {
         txtName.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNameKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNameKeyTyped(evt);
             }
@@ -110,6 +120,9 @@ public class SignUp extends javax.swing.JFrame {
         txtID.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtIDKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtIDKeyTyped(evt);
             }
@@ -121,6 +134,9 @@ public class SignUp extends javax.swing.JFrame {
         txtLastName.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtLastName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtLastName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtLastNameKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtLastNameKeyTyped(evt);
             }
@@ -271,24 +287,24 @@ public class SignUp extends javax.swing.JFrame {
 
         ValidationExistUserById validator = new ValidationExistUserById();
         if (validator.exist(idUser)) {
-            JOptionPane.showMessageDialog(this, "❌ Ya existe un usuario con esa cédula");
+            JOptionPane.showMessageDialog(this, "There is already a user with that ID.");
             return;
         }
 
         if (career.equals("Select")) {
-            JOptionPane.showMessageDialog(this, "⚠️ Debes seleccionar una carrera");
+            JOptionPane.showMessageDialog(this, "You must select a career");
             return;
         }
 
         IEmailValidation emailValidator = new EmailValidationHandler();
         if (!emailValidator.isEmailValid(email)) {
-            JOptionPane.showMessageDialog(this, "❌ Correo electrónico no válido");
+            JOptionPane.showMessageDialog(this, "Invalid Email");
             txtEmail.requestFocus();
             return;
         }
 
         if (!idUser.matches("\\d{8,10}")) {
-            JOptionPane.showMessageDialog(this, "⚠️ La cédula debe tener entre 8 y 10 dígitos");
+            JOptionPane.showMessageDialog(this, "️The ID must have between 8 and 10 digits");
             txtID.requestFocus();
             return;
         }
@@ -299,13 +315,13 @@ public class SignUp extends javax.swing.JFrame {
         user.setLastName(lastName);
         user.setEmail(email);
         user.setCareer(career);
-        user.setPassword(idUser); // Contraseña inicial igual al ID
+        user.setPassword(idUser);
         user.setPoints(0);
 
         UserController userController = new UserController();
         userController.createUser(user);
 
-        JOptionPane.showMessageDialog(this, "✅ Usuario registrado correctamente");
+        JOptionPane.showMessageDialog(this, "Successfully registered user");
 
         limpiar();
         this.dispose();
@@ -322,6 +338,30 @@ public class SignUp extends javax.swing.JFrame {
         login.setVisible(true);
 
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void txtIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtName.requestFocus();
+        }
+    }//GEN-LAST:event_txtIDKeyPressed
+
+    private void txtNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtLastName.requestFocus();
+        }
+    }//GEN-LAST:event_txtNameKeyPressed
+
+    private void txtLastNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLastNameKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtEmail.requestFocus();
+        }
+    }//GEN-LAST:event_txtLastNameKeyPressed
+
+    private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            JBoxCarrer.requestFocus();
+        }
+    }//GEN-LAST:event_txtEmailKeyPressed
     
     public void limpiar() {
         txtName.setText("");

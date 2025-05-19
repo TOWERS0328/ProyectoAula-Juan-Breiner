@@ -19,7 +19,6 @@ public class TicketController {
     private static final TicketRepository repository = new TicketRepository();
     private static final PersonalTicketRepository personalRepository = new PersonalTicketRepository();
 
-    // Genera un nuevo ticket y lo encola
     public static RedemptionTicket generateAndEnqueueTicket(String userId, String userName, String awardName) {
         int ticketNumber = repository.generateNextTicketNumber();
         RedemptionTicket ticket = new RedemptionTicket(ticketNumber, userName, userId, awardName);
@@ -28,7 +27,6 @@ public class TicketController {
         return ticket;
     }
 
-    // Atiende el primer ticket en la cola
     public static RedemptionTicket attendNextTicket() {
         return repository.dequeueTicket();
     }
@@ -37,7 +35,6 @@ public class TicketController {
         return personalRepository.getUserTickets(userId);
     }
 
-    // Muestra todos los tickets en la tabla
     public static void showTicketsInTable(JTable table) {
         List<RedemptionTicket> tickets = repository.getAllTickets();
         ShowTicketAndCreateTableHandler handler = new ShowTicketAndCreateTableHandler();
@@ -65,7 +62,6 @@ public class TicketController {
     handler.showTable(table, userTickets);
 }
 
-    // Devuelve todos los tickets (opcional, si se requiere en alguna lógica externa)
     public static List<RedemptionTicket> getAllTickets() {
         return repository.getAllTickets();
     }

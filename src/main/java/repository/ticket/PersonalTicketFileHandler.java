@@ -16,7 +16,6 @@ import java.util.List;
 public class PersonalTicketFileHandler {
     private final Gson gson = new Gson();
 
-    // ruta base para los archivos de cada usuario
     private final String BASE_PATH = "user_tickets/";
 
     public List<RedemptionTicket> readFromFile(String userId) {

@@ -22,7 +22,7 @@ public class AwardRepository {
         fileHandler.saveToFile(awards);
     }
 
-    public Award findAwardById(String idAward) {
+    public Award findAwardByCode(String idAward) {
         return fileHandler.readFromFile().stream()
                 .filter(award -> award.getCode().equals(idAward))
                 .findFirst()

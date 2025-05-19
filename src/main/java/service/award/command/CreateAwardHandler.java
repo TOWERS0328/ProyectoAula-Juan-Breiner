@@ -19,6 +19,5 @@ public class CreateAwardHandler implements IInsert<Award> {
     @Override
     public void insert(Award award) {
         awardRepository.saveAward(award);
-        System.out.println("Premio creado exitosamente.");
     }
 }

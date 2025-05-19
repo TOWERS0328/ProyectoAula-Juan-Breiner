@@ -23,7 +23,7 @@ public class ShowTicketHistoyInLabelsHandler {
                                                       JLabel lblAwardName,
                                                       JLabel lblDate) {
         if (tickets.isEmpty()) {
-            lblTicketNumber.setText("Sin redenciones");
+            lblTicketNumber.setText("No redemptions");
             lblUserName.setText("-");
             lblUserId.setText("-");
             lblAwardName.setText("-");
@@ -31,7 +31,7 @@ public class ShowTicketHistoyInLabelsHandler {
             return;
         }
 
-        RedemptionTicket ticket = tickets.get(0); // último redimido (en la cima de la pila)
+        RedemptionTicket ticket = tickets.get(0);
         lblTicketNumber.setText(String.format("%02d", ticket.getTicketNumber()));
         lblUserName.setText(ticket.getUserName());
         lblUserId.setText(ticket.getUserId());

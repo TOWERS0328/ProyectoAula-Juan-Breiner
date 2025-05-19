@@ -32,12 +32,12 @@ public class ShowTicketAndCreateTableHandler implements IShowElementAndCreateTab
         table.setRowSorter(sorter);
 
         model.addColumn("Ticket #");
-        model.addColumn("Nombre");
-        model.addColumn("Cédula");
-        model.addColumn("Premio");
+        model.addColumn("Name");
+        model.addColumn("ID");
+        model.addColumn("Prize");
 
         if (tickets.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No hay tickets en cola para mostrar.");
+            JOptionPane.showMessageDialog(null, "There are no tickets in queue to display");
             table.setModel(model);
             return;
         }

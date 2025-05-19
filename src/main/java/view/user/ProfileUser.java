@@ -66,6 +66,7 @@ public class ProfileUser extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setType(java.awt.Window.Type.UTILITY);
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -364,7 +365,7 @@ public class ProfileUser extends javax.swing.JFrame {
 
         IEmailValidation emailValidator = new EmailValidationHandler();
         if (!emailValidator.isEmailValid(email)) {
-            JOptionPane.showMessageDialog(null, "Correo electrónico inválido");
+            JOptionPane.showMessageDialog(null, "Invalid email");
             txtEmail.requestFocus();
             return;
         }
@@ -373,14 +374,6 @@ public class ProfileUser extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Cedula must be 8 to 10 digits.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
-        ValidationExistUserById validator = new ValidationExistUserById();
-
-         if (validator.exist(cedula)) {
-          JOptionPane.showMessageDialog(null, "El ID ya está registrado por otro usuario.");
-           return;
-        }
-
         
         User actualUser = ProfileController.getProfile();
         if (actualUser == null) {

@@ -30,13 +30,13 @@ public class ShowUserHistoryAndCreateTableHandler implements IShowElementAndCrea
         table.setRowSorter(sorter);
 
         model.addColumn("Ticket #");
-        model.addColumn("Nombre");
-        model.addColumn("Cédula");
-        model.addColumn("Premio");
-        model.addColumn("Fecha"); // NUEVA COLUMNA
+        model.addColumn("Name");
+        model.addColumn("ID");
+        model.addColumn("Prize");
+        model.addColumn("Date");
 
         if (tickets.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No hay tickets para mostrar.");
+            JOptionPane.showMessageDialog(null, "There are no tickets to display");
             table.setModel(model);
             return;
         }

@@ -20,7 +20,7 @@ public class TicketRepository {
 
     public void enqueueTicket(RedemptionTicket ticket) {
         List<RedemptionTicket> currentTickets = fileHandler.readFromFile();
-        currentTickets.add(ticket); // Encolar al final
+        currentTickets.add(ticket);
         fileHandler.saveToFile(currentTickets);
     }
 
@@ -28,7 +28,7 @@ public class TicketRepository {
         List<RedemptionTicket> currentTickets = fileHandler.readFromFile();
         if (currentTickets.isEmpty()) return null;
 
-        RedemptionTicket attended = currentTickets.remove(0); // Desencolar
+        RedemptionTicket attended = currentTickets.remove(0);
         fileHandler.saveToFile(currentTickets);
         return attended;
     }

@@ -65,8 +65,8 @@ public class ProfileController {
     for (int i = 0; i < users.size(); i++) {
         User user = users.get(i);
         if (user.getIdUser().equals(cedula)) {
-            int currentPoints = user.getPoints(); // Asegúrate de tener este getter
-            user.setPoints(currentPoints + pointsToAdd); // Asegúrate de tener este setter
+            int currentPoints = user.getPoints();
+            user.setPoints(currentPoints + pointsToAdd);
             users.set(i, user);
             handler.saveToFile(users);
             JOptionPane.showMessageDialog(null, "Points added successfully.");
