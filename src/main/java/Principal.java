@@ -11,7 +11,7 @@ public class Principal {
         UserRepository repo = new UserRepository();
 
         List<User> loadedUsers = repo.getAllUsers();
-        System.out.println(" Usuarios cargados desde users.json:");
+        System.out.println(" Usuarios registrados");
         for (User u : loadedUsers) {
             System.out.println(u);
         }
