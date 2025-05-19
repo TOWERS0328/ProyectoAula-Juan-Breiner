@@ -293,7 +293,7 @@ public class RedemmPoints extends javax.swing.JFrame {
     }//GEN-LAST:event_RedeemBtnActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-       addFilter(tbAward, txtSearch, 2);
+       addFilter(tbAward, txtSearch, 1);
     }//GEN-LAST:event_btnSearchActionPerformed
     
     private boolean validadorSudmit() {

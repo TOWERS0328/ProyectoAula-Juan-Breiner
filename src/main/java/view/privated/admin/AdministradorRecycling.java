@@ -812,7 +812,7 @@ public class AdministradorRecycling extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPointsUKeyTyped
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        addRealTimeFilter(tbUpdate, txtSearch, 1);
+        addRealTimeFilter(tbUpdate, txtSearch, 2);
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void txtSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyTyped

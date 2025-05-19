@@ -28,8 +28,8 @@ public class ShowAwardAndCreateTableHandler implements IShowElementAndCreateTabl
         table.setRowSorter(alphabeticOrder);
 
         model.addColumn("Code");
-        model.addColumn("Name");
-        model.addColumn("category");
+        model.addColumn("Name Award");
+        model.addColumn("Category");
         model.addColumn("Points");
         table.setModel(model);
 

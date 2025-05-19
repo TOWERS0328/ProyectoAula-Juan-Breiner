@@ -136,7 +136,7 @@ public class RedemptionHistory extends javax.swing.JFrame {
         );
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Aqui encontraras todas tus redenciones");
+        jLabel2.setText("Here you will find all your redemptions");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 153, 51));

@@ -26,7 +26,7 @@ public class ShowResidueAndCreateTableHandler implements IShowElementAndCreateTa
         
         model.addColumn("Code");
         model.addColumn("Type");
-        model.addColumn("Objet");
+        model.addColumn("Object");
         model.addColumn("Points");
         table.setModel(model);
 
